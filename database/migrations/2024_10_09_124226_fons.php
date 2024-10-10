@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->longText('description')->nullable();
             $table->string('author', 100)->nullable();
+            $table->boolean('active')->default(true);
         });
     }
 
