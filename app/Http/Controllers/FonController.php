@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fon;
+use Attribute;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class FonController extends Controller
 {
     public function selectFon() {
-        $fons = Fon::all();
+        $fon_codes = [];
 
-        return view('selector', compact('fons'));
+        foreach (Fon::all() as $fon)
+            array_push($fon_codes, $fon->code);
+
+        return view('selector', compact('fon_codes'));
     }
 
     public function showFon($fon_code) {

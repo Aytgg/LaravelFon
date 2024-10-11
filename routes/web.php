@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('content');
-// });
+Route::get('/sbadmin', function () {
+    return view('content');
+});
 
 Route::get('/',
     ['App\Http\Controllers\FonController'::Class, 'selectFon'])

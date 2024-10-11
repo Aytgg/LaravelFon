@@ -1,9 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.master', ['fc' => $fon->code])
 
 @section('content')
 
 <div class="content">
+    {{--
     @include('fonPricePeriod')
+    --}}
     <div class="row">
         <div class="col-12">
             <div class="card card-chart">
