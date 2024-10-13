@@ -33,6 +33,7 @@ var period = 0;
 
 var neededData = dataforchart.slice(0, 7);
 var neededPrices = [];
+var neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
 
 document.getElementsByName('options').forEach(function(radio) {
   radio.addEventListener('click', function() {
@@ -40,30 +41,39 @@ document.getElementsByName('options').forEach(function(radio) {
     switch (period) {
       case 0:
         neededData = dataforchart.slice(0, 7);
+        neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
         break;
       case 1:
         neededData = dataforchart.slice(0, 30);
+        neededLabels = Array.from({ length: 30 }, (_, i) => i + 1);
         break;
       case 2:
         neededData = dataforchart.slice(0, 30*3);
+        neededLabels = Array.from({ length: 30*3 }, (_, i) => i + 1);
         break;
       case 3:
         neededData = dataforchart.slice(0, 365);
+        neededLabels = Array.from({ length: 365 }, (_, i) => i + 1);
         break;
       case 4:
         neededData = dataforchart.slice(0, 365*3);
+        neededLabels = Array.from({ length: 365*3 }, (_, i) => i + 1);
+
         break;
       default:
         neededData = dataforchart.slice(0, 7);;
+        neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
         break;
     }
 
-    newChart(neededDataToNeededPrices(neededData));
+    if (myLineChart)
+      myLineChart.destroy();
+    newChart(neededDataToNeededPrices(neededData), neededLabels);
   }
 )});
 
 setTimeout(() => {
-  newChart(neededDataToNeededPrices(neededData));
+  newChart(neededDataToNeededPrices(neededData), neededLabels);
 }, 100);
 
 function neededDataToNeededPrices(neededData) {
@@ -75,14 +85,16 @@ function neededDataToNeededPrices(neededData) {
   return neededPrices;
 }
 
-async function newChart(useThisData) {
+let myLineChart;
+
+async function newChart(useThisData, LabelData) {
 
   var myLineChart = await new Chart(document.getElementById("myAreaChart"), {
     type: 'line',
     data: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      labels: LabelData,//["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       datasets: [{
-        label: "Earnings",
+        label: "Fiyat",
         lineTension: 0.3,
         backgroundColor: "rgba(78, 115, 223, 0.05)",
         borderColor: "rgba(78, 115, 223, 1)",
@@ -94,7 +106,7 @@ async function newChart(useThisData) {
         pointHoverBorderColor: "rgba(78, 115, 223, 1)",
         pointHitRadius: 10,
         pointBorderWidth: 2,
-        data: neededPrices,
+        data: useThisData,
       }],
     },
     options: {
