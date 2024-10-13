@@ -18,9 +18,25 @@
             <!-- Nav Item - Alerts -->
             <li class="nav-item  no-arrow mx-1">
                 <div>
-                    <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">10 Ekim 2024</div>
+                    @php
+                        $useThisFonPrice = DB::table('fonprices')->where('fon_id', $fon->id)
+                            ->orderBy('date', 'desc')
+                            ->get()->first();
+
+                        setlocale(LC_TIME, 'turkish');
+
+                        $fonPrice = number_format($useThisFonPrice->price, 2, ',', '.');
+                        $fonDate = strftime('%e %B %Y', strtotime($useThisFonPrice->date));
+                        //$fonDate = date_format(date_create($useThisFonPrice->date), 'd F Y');
+                        //$fonDate = date('d F Y', strtotime($useThisFonPrice->date));
+                    @endphp
+                    <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">
+                        {{ $fonDate }}
+                    </div>
                     <div class="text-2xl font-semibold text-white">
-                        <span class="inline-flex items-center tabular-nums">0,567620</span>
+                        <span class="inline-flex items-center tabular-nums">
+                            {{ $fonPrice }}
+                        </span>
                     </div>
                 </div>
             </li>
