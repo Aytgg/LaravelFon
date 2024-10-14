@@ -129,7 +129,7 @@ async function newChart(useThisData, LabelData) {
             drawBorder: false
           },
           ticks: {
-            maxTicksLimit: 7
+            maxTicksLimit: 30
           }
         }],
         yAxes: [{

@@ -3,7 +3,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Fon Bilgileri</h6>
     </div>
     <div class="card-body">
-        <p>{{ $fon->description }}</p>
+        <p>{{ Str::limit($fon->description, 150) }}</p>
         <div class="divide-y divide-stroke-01">
             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                 <span class="text-foreground-03">
