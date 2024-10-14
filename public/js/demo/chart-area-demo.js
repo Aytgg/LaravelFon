@@ -66,8 +66,6 @@ document.getElementsByName('options').forEach(function(radio) {
         break;
     }
 
-    if (myLineChart)
-      myLineChart.destroy();
     newChart(neededDataToNeededPrices(neededData), neededLabels);
   }
 )});
@@ -82,14 +80,16 @@ function neededDataToNeededPrices(neededData) {
     neededPrices.push(data.price);
   });
 
-  return neededPrices;
+  return neededPrices.reverse();
 }
 
 let myLineChart;
 
 async function newChart(useThisData, LabelData) {
+  if (myLineChart)
+    myLineChart.destroy();
 
-  var myLineChart = await new Chart(document.getElementById("myAreaChart"), {
+  myLineChart = await new Chart(document.getElementById("myAreaChart") , {
     type: 'line',
     data: {
       labels: LabelData,//["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
