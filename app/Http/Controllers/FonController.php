@@ -162,14 +162,6 @@ class FonController extends Controller
             'time',
             'fonPayAdet',
             'fonYatirimciSayisi',
-            /*
-            'fonPriceDiff1Month',
-            'fonPriceDiff3Month',
-            'fonPriceDiff6Month',
-            'fonPriceDiff1Year',
-            'fonPriceDiff3Year',
-            'fonPriceDiff5Year',
-            */
             'fonPriceDiffs',
             'fonPayAdetMonthly',
             'fonYatirimciSayisiMonthly',
