@@ -75,14 +75,16 @@
         @include('fonPricePeriod', $fon)
     </div>
 
+    <!-- AREA CHART & FONINFO -->
     <div class="row m-2">
         <div class="col-9">
-            @include('widgets.chart')
+            @include('widgets.areaChart')
         </div>
         <div class="col-3">
             @include('widgets.foninfo')
         </div>
     </div>
+    <!-- BAR CHARTS -->
     <div class="row m-2">
         <div class="col-3">
             <div class="card shadow mb-4">
@@ -116,6 +118,318 @@
                 </div>
                 <div class="card-body">
                     <p>{{ number_format($fonPayAdet, 0, '.', ',') }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Hacim Bilgileri</h6>
+                </div>
+                <div class="card-body">
+                    <div class="divide-y divide-stroke-01">
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">Toplam Adet</span>
+                            <span class="float-right text-foreground-02 truncate">18,75 mr</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">Aktif Adet</span>
+                            <span class="float-right text-foreground-02 truncate">7,68 mr</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">Doluluk Oranı</span>
+                            <span class="float-right text-foreground-02 truncate">%40,96</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">Pazar Payı</span>
+                            <span class="float-right text-foreground-02 truncate">%7,84</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- STATICS -->
+    <div class="row m-2">
+        <div class="col-3">
+            <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">En Büyük Pozisyonlar</div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/ALARK">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img alt="Alarko Holding A.Ş. Şirket Logosu"
+                                        data-state="closed" loading="lazy" width="28" height="28" decoding="async"
+                                        data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/alarko_icon.png">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">ALARK</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:09:43</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">83,20</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-success-solid-01">0,60</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/YKBNK">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img alt="Yapı ve Kredi Bankası A.Ş. Şirket Logosu"
+                                        data-state="closed" loading="lazy" width="28" height="28" decoding="async"
+                                        data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/ykbnk_icon.jpg">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">YKBNK</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:09:42</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">25,34</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-danger-solid-01">-0,39</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/SAHOL">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img alt="Hacı Ömer Sabancı Holding A.Ş. Şirket Logosu"
+                                        data-state="closed" loading="lazy" width="28" height="28" decoding="async"
+                                        data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/sahol_icon.png">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">SAHOL</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:09:39</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">86,85</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-danger-solid-01">-0,57</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın Zamanda Artırılanlar</div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/AKBNK">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img alt="Akbank T.A.Ş. Şirket Logosu" data-state="closed"
+                                        loading="lazy" width="28" height="28" decoding="async" data-nimg="1"
+                                        class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/akbnk_icon.png">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">AKBNK</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:12:12</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">53,20</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-danger-solid-01">-1,30</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/YKBNK">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img alt="Yapı ve Kredi Bankası A.Ş. Şirket Logosu"
+                                        data-state="closed" loading="lazy" width="28" height="28" decoding="async"
+                                        data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/ykbnk_icon.jpg">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">YKBNK</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:12:11</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">25,32</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-danger-solid-01">-0,47</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/ALARK">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img alt="Alarko Holding A.Ş. Şirket Logosu"
+                                        data-state="closed" loading="lazy" width="28" height="28" decoding="async"
+                                        data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/alarko_icon.png">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">ALARK</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:12:04</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">83,30</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-success-solid-01">0,73</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın Zamanda Azaltılanlar</div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/BTCIM">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img
+                                        alt="Batıçim Batı Anadolu Çimento Sanayii A.Ş. Şirket Logosu"
+                                        data-state="closed" loading="lazy" width="28" height="28" decoding="async"
+                                        data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/BTCIM.png">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">BTCIM</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:12:37</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">148,90</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-success-solid-01">0,88</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/BSOKE">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img
+                                        alt="Batısöke Söke Çimento Sanayii T.A.Ş. Şirket Logosu" data-state="closed"
+                                        loading="lazy" width="28" height="28" decoding="async" data-nimg="1"
+                                        class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/BSOKE.png">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">BSOKE</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:12:33</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">50,50</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-danger-solid-01">-0,20</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
+                        href="/sirketler/AEFES">
+                        <div class="py-1.5 px-4 flex justify-between items-center">
+                            <div class="w-28">
+                                <div class="flex space-x-1.5"><img
+                                        alt="Anadolu Efes Biracılık ve Malt Sanayii A.Ş. Şirket Logosu"
+                                        data-state="closed" loading="lazy" width="28" height="28" decoding="async"
+                                        data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
+                                        src="https://storage.fintables.com/media/uploads/company-logos/AEFES.png">
+                                    <div class="h-[28px]">
+                                        <div class="text-foreground-01 text-sm mt-[-3px]">AEFES</div>
+                                        <div class="text-foreground-03 text-[10px] -mt-0.5">11:12:36</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-sm tabular-nums flex flex-col items-end">
+                                <div><span class="inline-flex items-center tabular-nums">182,40</span></div>
+                                <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
+                                        class="inline-flex items-center tabular-nums"><span
+                                            class="text-xs text-foreground-03 mr-1">%</span><span
+                                            class="text-shared-danger-solid-01">-0,87</span></span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Getiri Bilgileri</h6>
+                </div>
+                <div class="card-body">
+                    <div class="divide-y divide-stroke-01">
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">1 Ay</span>
+                            <span class="float-right text-foreground-02 truncate">%-8,62</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">3 Ay</span>
+                            <span class="float-right text-foreground-02 truncate">%-1,42</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">6 Ay</span>
+                            <span class="float-right text-foreground-02 truncate">%16,88</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">YTD</span>
+                            <span class="float-right text-foreground-02 truncate">%46,13</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">1 Yıl</span>
+                            <span class="float-right text-foreground-02 truncate">%58,71</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">3 Yıl</span>
+                            <span class="float-right text-foreground-02 truncate">%960,95</span>
+                        </div>
+                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                            <span class="text-foreground-03">5 Yıl</span>
+                            <span class="float-right text-foreground-02 truncate">%1.889,39</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
