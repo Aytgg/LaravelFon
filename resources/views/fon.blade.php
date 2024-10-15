@@ -76,11 +76,48 @@
     </div>
 
     <div class="row m-2">
-        <div class="col-8">
+        <div class="col-9">
             @include('widgets.chart')
         </div>
-        <div class="col-4">
+        <div class="col-3">
             @include('widgets.foninfo')
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-3">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Fon Toplam Değer</h6>
+                </div>
+                <div class="card-body">
+                    <p>{{ number_format(
+    floatval(str_replace(',', '.', $fonPrice)) * $fonPayAdet,
+    2,
+    '.',
+    ','
+) }} ₺</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Yatırımcı Sayısı</h6>
+                </div>
+                <div class="card-body">
+                    <p>{{ number_format($fonYatirimciSayisi, 0, '.', ',') }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Dolaşımdaki Pay Adedi</h6>
+                </div>
+                <div class="card-body">
+                    <p>{{ number_format($fonPayAdet, 0, '.', ',') }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

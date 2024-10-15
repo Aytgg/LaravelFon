@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             FonSeeder::class,
-            FonPriceSeeder::class,
+            // FonPriceSeeder::class,
+            // PayAdetSeeder::class,
+            // YatirimciSayisiSeeder::class,
         ]);
     }
 }

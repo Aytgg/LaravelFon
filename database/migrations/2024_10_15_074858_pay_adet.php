@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        if (!Schema::hasTable('fonprices'))
-            Schema::create('fonprices', function (Blueprint $table) {
+        if (!Schema::hasTable('payAdet'))
+            Schema::create('payAdet', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('fon_id')
                     ->foreign('fon_id')->references('id')->on('fons')
                     ->onDelete('cascade');
-                $table->float('price')->min(0);
+                $table->bigInteger('payAdet')->min(0);
                 $table->date('date');
             });
     }
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        // Schema::drop('fonprices');
+        // Schema::drop('payAdet');
     }
 };
