@@ -36,7 +36,7 @@ setlocale(LC_TIME, 'turkish');
             <li class="nav-item  mx-1 show">
                 <div class="text-foreground-03 text-sm text-white">1 Aylık Getiri</div>
                 <div class="text-2xl font-semibold " style="color: #e3dedeb3">
-                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiff1Month }}</span>
+                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiffs['1Month'] }}</span>
                 </div>
             </li>
 
@@ -46,7 +46,7 @@ setlocale(LC_TIME, 'turkish');
             <li class="nav-item dropdown no-arrow">
                 <div class="text-foreground-03 text-sm text-white">3 Aylık Getiri</div>
                 <div class="text-2xl font-semibold" style="color: #e3dedeb3">
-                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiff3Month }}</span>
+                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiffs['3Month'] }}</span>
                 </div>
             </li>
         </ul>
@@ -397,15 +397,15 @@ setlocale(LC_TIME, 'turkish');
                     <div class="divide-y divide-stroke-01">
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">1 Ay</span>
-                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff1Month }}</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['1Month'] }}</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">3 Ay</span>
-                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff3Month }}</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['3Month'] }}</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">6 Ay</span>
-                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff6Month }}</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['6Month'] }}</span>
                         </div>
                         <!-- <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">YTD</span>
@@ -413,15 +413,15 @@ setlocale(LC_TIME, 'turkish');
                         </div> -->
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">1 Yıl</span>
-                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff1Year }}</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['1Year'] }}</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">3 Yıl</span>
-                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff3Year }}</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['3Year'] }}</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">5 Yıl</span>
-                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff5Year }}</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['5Year'] }}</span>
                         </div>
                     </div>
                 </div>
