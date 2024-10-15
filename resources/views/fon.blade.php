@@ -18,20 +18,11 @@
             <!-- Nav Item - Alerts -->
             <li class="nav-item  no-arrow mx-1">
                 <div>
-                    @php
-                        $useThisFonPrice = DB::table('fonprices')->where('fon_id', $fon->id)
-                            ->orderBy('date', 'desc')
-                            ->get()->first();
-
-                        setlocale(LC_TIME, 'turkish');
-
-                        $fonPrice = number_format($useThisFonPrice->price, 2, ',', '.');
-                        $fonDate = strftime('%e %B %Y', strtotime($useThisFonPrice->date));
-                        //$fonDate = date_format(date_create($useThisFonPrice->date), 'd F Y');
-                        //$fonDate = date('d F Y', strtotime($useThisFonPrice->date));
-                    @endphp
+                    <?php
+setlocale(LC_TIME, 'turkish');
+                    ?>
                     <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">
-                        {{ $fonDate }}
+                        {{ strftime('%e %B %Y', strtotime($time)) }}
                     </div>
                     <div class="text-2xl font-semibold text-white">
                         <span class="inline-flex items-center tabular-nums">
@@ -45,7 +36,7 @@
             <li class="nav-item  mx-1 show">
                 <div class="text-foreground-03 text-sm text-white">1 Aylık Getiri</div>
                 <div class="text-2xl font-semibold " style="color: #e3dedeb3">
-                    <span class="inline-flex items-center tabular-nums">%-5,98</span>
+                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiff1Month }}</span>
                 </div>
             </li>
 
@@ -55,7 +46,7 @@
             <li class="nav-item dropdown no-arrow">
                 <div class="text-foreground-03 text-sm text-white">3 Aylık Getiri</div>
                 <div class="text-2xl font-semibold" style="color: #e3dedeb3">
-                    <span class="inline-flex items-center tabular-nums">%-5,98</span>
+                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiff3Month }}</span>
                 </div>
             </li>
         </ul>
@@ -149,11 +140,12 @@
             </div>
         </div>
     </div>
-    <!-- STATICS -->
+    <!-- STATICS & GETİRİ BİLGİLERİ -->
     <div class="row m-2">
         <div class="col-3">
             <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">En Büyük Pozisyonlar</div>
+                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">En
+                    Büyük Pozisyonlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
                         href="/sirketler/ALARK">
@@ -233,7 +225,8 @@
         </div>
         <div class="col-3">
             <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın Zamanda Artırılanlar</div>
+                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
+                    Zamanda Artırılanlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
                         href="/sirketler/AKBNK">
@@ -313,7 +306,8 @@
         </div>
         <div class="col-3">
             <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın Zamanda Azaltılanlar</div>
+                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
+                    Zamanda Azaltılanlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
                         href="/sirketler/BTCIM">
@@ -403,31 +397,31 @@
                     <div class="divide-y divide-stroke-01">
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">1 Ay</span>
-                            <span class="float-right text-foreground-02 truncate">%-8,62</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff1Month }}</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">3 Ay</span>
-                            <span class="float-right text-foreground-02 truncate">%-1,42</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff3Month }}</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">6 Ay</span>
-                            <span class="float-right text-foreground-02 truncate">%16,88</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff6Month }}</span>
                         </div>
-                        <div class="flex justify-between items-center h-9 space-x-4 text-sm">
+                        <!-- <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">YTD</span>
-                            <span class="float-right text-foreground-02 truncate">%46,13</span>
-                        </div>
+                            <span class="float-right text-foreground-02 truncate">%???</span>
+                        </div> -->
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">1 Yıl</span>
-                            <span class="float-right text-foreground-02 truncate">%58,71</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff1Year }}</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">3 Yıl</span>
-                            <span class="float-right text-foreground-02 truncate">%960,95</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff3Year }}</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                             <span class="text-foreground-03">5 Yıl</span>
-                            <span class="float-right text-foreground-02 truncate">%1.889,39</span>
+                            <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiff5Year }}</span>
                         </div>
                     </div>
                 </div>

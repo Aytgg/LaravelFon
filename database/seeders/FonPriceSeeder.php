@@ -18,9 +18,9 @@ class FonPriceSeeder extends Seeder
     public function run(): void
     {
         $period = new DatePeriod(
-            new DateTime('2021-10-13'),
+            new DateTime('2019-10-12'),
             DateInterval::createFromDateString('1 day'),
-            new DateTime('2024-10-13')
+            new DateTime('2024-10-14')
         );
 
         foreach (['IPB', 'IIH'] as $fon_code) {
