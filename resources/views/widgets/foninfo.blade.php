@@ -3,7 +3,32 @@
         <h6 class="m-0 font-weight-bold text-primary">Fon Bilgileri</h6>
     </div>
     <div class="card-body">
-        <p>{{ Str::limit($fon->description, 150) }}</p>
+        <?php
+            $fonDesc = json_encode($fon->description . "<br>[Kısalt]");
+            echo "<script>var fonDesc = $fonDesc;</script>";
+
+            use Illuminate\Support\Str;
+
+            $fonDescLess = json_encode(Str::limit($fon->description, 150, '<br>[Devamını gör]'));
+            echo "<script>var fonDescLess = $fonDescLess;</script>";
+        ?>
+        <p onclick="showMore(fonDesc, fonDescLess);" id="showMoreP">
+            {!! Str::limit($fon->description, 150, '<br>[Devamını gör]') !!}
+        </p>
+        <script>
+            function showMore(desc, shortDesc) {
+                var showMoreP = document.getElementById('showMoreP');
+                showMoreP.innerHTML = desc;
+
+                showMoreP.setAttribute('onclick', 'showLess("'+ shortDesc +'", "'+ desc +'");');
+            }
+            function showLess(shortDesc, desc) {
+                var showMoreP = document.getElementById('showMoreP');
+                showMoreP.innerHTML = shortDesc;
+
+                showMoreP.setAttribute('onclick', 'showMore("'+ desc +'", "'+ shortDesc +'");');
+            }
+        </script>
         <div class="divide-y divide-stroke-01">
             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                 <span class="text-foreground-03">
