@@ -163,8 +163,11 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
     <!-- STATICS & GETİRİ BİLGİLERİ -->
     <div class="row m-2">
         <div class="col-md-4 col-lg-3">
-            <div class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">En
+            <div
+                class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div
+                    class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">
+                    En
                     Büyük Pozisyonlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
@@ -244,8 +247,11 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
             </div>
         </div>
         <div class="col-md-4 col-lg-3">
-            <div class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
+            <div
+                class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div
+                    class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">
+                    Yakın
                     Zamanda Artırılanlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
@@ -325,8 +331,11 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
             </div>
         </div>
         <div class="col-md-4 col-lg-3">
-            <div class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
+            <div
+                class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div
+                    class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">
+                    Yakın
                     Zamanda Azaltılanlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
@@ -451,8 +460,29 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
     <div class="row m-2">
         <div class="col-md-12 col-lg-9">
             <div class="card shadow mb-4">
+                <div class="card-header py3 d-inline-flex justify-content-between">
+                    <!-- <h6 class="m-0 font-weight-bold text-primary d-inline-flex">1.000₺ Ne Oldu?</h6> -->
+                    <h6 class="m-0 font-weight-bold text-primary">1.000₺ Ne Oldu?</h6>
+                    <div class="float-right">
+                        <h6 class="d-inline m-2">1A</h6>
+                        <h6 class="d-inline m-2">3A</h6>
+                        <h6 class="d-inline m-2">6A</h6>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
+                    <div class="chart-area">
+                        <canvas id="volatilityAreaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-md-12 col-lg-9">
+            <div class="card shadow mb-4">
                 <div class="card-header py3">
-                <h6 class="m-0 font-weight-bold text-primary">Tarihsel Volatilite</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tarihsel Volatilite</h6>
                 </div>
                 <div class="card-body">
                     <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
