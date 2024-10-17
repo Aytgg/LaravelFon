@@ -1,4 +1,4 @@
-<div class="card shadow mb-4">
+<div class="bg-gradient-light card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Fon Bilgileri</h6>
     </div>

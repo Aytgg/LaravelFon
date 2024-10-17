@@ -68,25 +68,25 @@ setlocale(LC_TIME, 'turkish');
 
     <!-- AREA CHART & FONINFO -->
     <div class="row m-2">
-        <div class="col-md-9">
+        <div class="col-md-12 col-lg-9">
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <?php echo "<script>var dataforchart = $dataforAreaChart;</script>"; ?>
+                    <?php echo "<script>var dataforprice = $priceforAreaChart;</script>"; ?>
                     <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        <canvas id="priceAreaChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-12 col-lg-3">
             @include('widgets.foninfo')
         </div>
     </div>
     <!-- BAR CHARTS -->
     <div class="row m-2">
-        <div class="col-md-3">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
+        <div class="col-md-4 col-lg-3">
+            <div class="bg-gray-200 card shadow mb-4">
+                <div class="bg-gray-300 card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Fon Toplam Değer</h6>
                 </div>
                 <div class="card-body">
@@ -98,9 +98,9 @@ setlocale(LC_TIME, 'turkish');
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
+        <div class="col-md-4 col-lg-3">
+            <div class="bg-gray-200 card shadow mb-4">
+                <div class="bg-gray-300 card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Yatırımcı Sayısı</h6>
                 </div>
                 <div class="card-body">
@@ -115,9 +115,9 @@ echo "<script>var ysData = $ysforBarChart;</script>"
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
+        <div class="col-md-4 col-lg-3">
+            <div class="bg-gray-200 card shadow mb-4">
+                <div class="bg-gray-300 card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Dolaşımdaki Pay Adedi</h6>
                 </div>
                 <div class="card-body">
@@ -132,8 +132,8 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card shadow mb-4">
+        <div class="col-md-12 col-lg-3">
+            <div class="bg-gradient-light card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Hacim Bilgileri</h6>
                 </div>
@@ -162,9 +162,9 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
     </div>
     <!-- STATICS & GETİRİ BİLGİLERİ -->
     <div class="row m-2">
-        <div class="col-3">
-            <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">En
+        <div class="col-md-4 col-lg-3">
+            <div class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">En
                     Büyük Pozisyonlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
@@ -243,9 +243,9 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
                 </div>
             </div>
         </div>
-        <div class="col-3">
-            <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
+        <div class="col-md-4 col-lg-3">
+            <div class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
                     Zamanda Artırılanlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
@@ -324,9 +324,9 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
                 </div>
             </div>
         </div>
-        <div class="col-3">
-            <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
+        <div class="col-md-4 col-lg-3">
+            <div class="bg-gray-200 card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
+                <div class="bg-gray-300 card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
                     Zamanda Azaltılanlar</div>
                 <div>
                     <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
@@ -408,8 +408,8 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
                 </div>
             </div>
         </div>
-        <div class="col-3">
-            <div class="card shadow mb-4">
+        <div class="col-md-12 col-lg-3">
+            <div class="bg-gradient-light card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Getiri Bilgileri</h6>
                 </div>
@@ -443,6 +443,21 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
                             <span class="text-foreground-03">5 Yıl</span>
                             <span class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['5Year'] }}</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-md-12 col-lg-9">
+            <div class="card shadow mb-4">
+                <div class="card-header py3">
+                <h6 class="m-0 font-weight-bold text-primary">Tarihsel Volatilite</h6>
+                </div>
+                <div class="card-body">
+                    <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
+                    <div class="chart-area">
+                        <canvas id="volatilityAreaChart"></canvas>
                     </div>
                 </div>
             </div>

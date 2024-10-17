@@ -33,7 +33,10 @@ class FonController extends Controller
         $fonPriceLast = $fonprices->first();
         $fonPrice = $fonPriceLast->price;
 
-        $time = new DateTime($fonPriceLast->date);
+        $fonVolatility = DB::table('volatility')
+            ->where('fon_id', $fon->id)
+            ->orderByDesc(column: 'date')
+            ->get();
 
         $fonPayAdet = DB::table('payAdet')
             ->where('fon_id', $fon->id)
@@ -47,6 +50,7 @@ class FonController extends Controller
             ->first()
             ->yatirimciSayisi;
 
+        $time = new DateTime($fonPriceLast->date);
         $time = $time->format('Y-m-d');
 
         function getFonPriceDiff($fon, $date, $diff, $fonPrice)
@@ -85,8 +89,12 @@ class FonController extends Controller
         }
 
         $fonPayAdetMonthly =
-        $fonYatirimciSayisiMonthly =
-        $fonPriceMonthly = [];
+            $fonYatirimciSayisiMonthly =
+            $fonPriceMonthly =
+            $fonPriceDiffs =
+            $fonpricesForChart =
+            $ftdforBarChartData =
+            $fonVolatilityForChart = [];
 
         for ($i = 6; $i > 0; $i--) {
             array_push($fonPayAdetMonthly, getDataMonthly(
@@ -114,8 +122,6 @@ class FonController extends Controller
             ));
         }
 
-        $fonPriceDiffs = [];
-
         foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
             $fonPriceDiffs[$diff] = getFonPriceDiff(
                 $fon,
@@ -125,19 +131,19 @@ class FonController extends Controller
             );
         }
 
-        $fonpricesForChart = [];
-
         $fonprices->each(function ($item) use (&$fonpricesForChart) {
-            array_push($fonpricesForChart, $item);
+            array_push($fonpricesForChart, $item->price);
         });
 
-        $dataforAreaChart = json_encode($fonpricesForChart);
+        $fonVolatility->each(function ($item) use (&$fonVolatilityForChart) {
+            array_push($fonVolatilityForChart, $item->volatility);
+        });
 
-        $ftdforBarChartData = [];
+        $priceforAreaChart = json_encode($fonpricesForChart);
+        $volatilityforAreaChart = json_encode($fonVolatilityForChart);
 
-        for ($i = 0; $i < 6; $i++) {
-            array_push($ftdforBarChartData, $fonPayAdetMonthly[$i]*$fonPriceMonthly[$i]);
-        }
+        for ($i = 0; $i < 6; $i++)
+            array_push($ftdforBarChartData, $fonPayAdetMonthly[$i] * $fonPriceMonthly[$i]);
 
         // foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
         //     array_push($ftdforBarChartData, $fonPriceDiffs[$diff]);
@@ -154,8 +160,9 @@ class FonController extends Controller
             'fonPriceDiffs',
             'fonPayAdetMonthly',
             'fonYatirimciSayisiMonthly',
-            'dataforAreaChart',
+            'priceforAreaChart',
             'ftdforBarChart',
+            'volatilityforAreaChart'
         ));
     }
 }

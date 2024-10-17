@@ -30,66 +30,96 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Area Chart Example
 
+// dataforvolatility
+
+// VOLATILITY CHART
+
+var ctxVolatility = document.getElementById("volatilityAreaChart");
+var Labels = "123".split("");
+
+setTimeout(() => {
+    newChart(ctxVolatility, dataforvolatility.reverse(), Labels);
+}, 100);
+
+// PRICE CHART
+
 var period = 0;
 
-var neededData = dataforchart.slice(0, 7);
+var neededPriceData = dataforprice.slice(0, 7);
 var neededPrices = [];
-var neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+var neededPriceLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+
+var myLineChart;
 
 document.getElementsByName("options").forEach(function (radio) {
     radio.addEventListener("click", function () {
         period = parseInt(radio.id.slice(-1));
         switch (period) {
             case 0:
-                neededData = dataforchart.slice(0, 7);
-                neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+                neededPriceData = dataforprice.slice(0, 7);
+                neededPriceLabels = Array.from({ length: 7 }, (_, i) => i + 1);
                 break;
             case 1:
-                neededData = dataforchart.slice(0, 30);
-                neededLabels = Array.from({ length: 30 }, (_, i) => i + 1);
+                neededPriceData = dataforprice.slice(0, 30);
+                neededPriceLabels = Array.from({ length: 30 }, (_, i) => i + 1);
                 break;
             case 2:
-                neededData = dataforchart.slice(0, 30 * 3);
-                neededLabels = Array.from({ length: 30 * 3 }, (_, i) => i + 1);
+                neededPriceData = dataforprice.slice(0, 30 * 3);
+                neededPriceLabels = Array.from(
+                    { length: 30 * 3 },
+                    (_, i) => i + 1
+                );
                 break;
             case 3:
-                neededData = dataforchart.slice(0, 365);
-                neededLabels = Array.from({ length: 365 }, (_, i) => i + 1);
+                neededPriceData = dataforprice.slice(0, 365);
+                neededPriceLabels = Array.from(
+                    { length: 365 },
+                    (_, i) => i + 1
+                );
                 break;
             case 4:
-                neededData = dataforchart.slice(0, 365 * 3);
-                neededLabels = Array.from({ length: 365 * 3 }, (_, i) => i + 1);
+                neededPriceData = dataforprice.slice(0, 365 * 3);
+                neededPriceLabels = Array.from(
+                    { length: 365 * 3 },
+                    (_, i) => i + 1
+                );
 
                 break;
             default:
-                neededData = dataforchart.slice(0, 7);
-                neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+                neededPriceData = dataforprice.slice(0, 7);
+                neededPriceLabels = Array.from({ length: 7 }, (_, i) => i + 1);
                 break;
         }
 
-        newChart(neededDataToNeededPrices(neededData), neededLabels);
+        if (myLineChart) myLineChart.destroy();
+        newChart(
+            ctxPrice,
+            neededDataToNeededPrices(neededPriceData),
+            neededPriceLabels
+        );
     });
 });
 
+var ctxPrice = document.getElementById("priceAreaChart");
+
 setTimeout(() => {
-    var ctx = document.getElementById("myAreaChart");
-    newChart(neededDataToNeededPrices(neededData), neededLabels);
+    newChart(
+        ctxPrice,
+        neededDataToNeededPrices(neededPriceData),
+        neededPriceLabels
+    );
 }, 100);
 
-function neededDataToNeededPrices(neededData) {
+function neededDataToNeededPrices(neededPriceData) {
     neededPrices = [];
-    neededData.forEach((data) => {
+    neededPriceData.forEach((data) => {
         neededPrices.push(data.price);
     });
 
     return neededPrices.reverse();
 }
 
-let myLineChart;
-
-function newChart(useThisData, LabelData) {
-    if (myLineChart) myLineChart.destroy();
-
+function newChart(ctx, useThisData, LabelData) {
     myLineChart = new Chart(ctx, {
         type: "line",
         data: {
