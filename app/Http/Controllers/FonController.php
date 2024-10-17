@@ -25,10 +25,12 @@ class FonController extends Controller
     {
         $fon = Fon::where('code', $fon_code)->first();
 
-        $fonPriceLast = DB::table('fonprices')
+        $fonprices = DB::table('fonprices')
             ->where('fon_id', $fon->id)
             ->orderByDesc('date')
-            ->first();
+            ->get();
+
+        $fonPriceLast = $fonprices->first();
         $fonPrice = $fonPriceLast->price;
 
         $time = new DateTime($fonPriceLast->date);
@@ -61,11 +63,11 @@ class FonController extends Controller
             return number_format(($fonPrice - $fonPriceOld) / $fonPriceOld * 100, 2);
         }
 
-        function getDataMonthly($fon, $date, $diff, $column)
+        function getDataMonthly($fon, $date, $diff, $table, $column)
         {
             return intval(
                 round(
-                    DB::table($column)
+                    DB::table($table)
                         ->where('fon_id', $fon->id)
                         ->where(
                             'date',
@@ -82,14 +84,16 @@ class FonController extends Controller
             );
         }
 
-        $fonPayAdetMonthly = [];
-        $fonYatirimciSayisiMonthly = [];
+        $fonPayAdetMonthly =
+        $fonYatirimciSayisiMonthly =
+        $fonPriceMonthly = [];
 
         for ($i = 6; $i > 0; $i--) {
             array_push($fonPayAdetMonthly, getDataMonthly(
                 $fon,
                 $time,
                 '-' . $i . ' month',
+                'payAdet',
                 'payAdet'
             ));
 
@@ -97,7 +101,16 @@ class FonController extends Controller
                 $fon,
                 $time,
                 '-' . $i . ' month',
+                'yatirimciSayisi',
                 'yatirimciSayisi'
+            ));
+
+            array_push($fonPriceMonthly, getDataMonthly(
+                $fon,
+                $time,
+                '-' . $i . ' month',
+                'fonprices',
+                'price'
             ));
         }
 
@@ -112,6 +125,26 @@ class FonController extends Controller
             );
         }
 
+        $fonpricesForChart = [];
+
+        $fonprices->each(function ($item) use (&$fonpricesForChart) {
+            array_push($fonpricesForChart, $item);
+        });
+
+        $dataforAreaChart = json_encode($fonpricesForChart);
+
+        $ftdforBarChartData = [];
+
+        for ($i = 0; $i < 6; $i++) {
+            array_push($ftdforBarChartData, $fonPayAdetMonthly[$i]*$fonPriceMonthly[$i]);
+        }
+
+        // foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
+        //     array_push($ftdforBarChartData, $fonPriceDiffs[$diff]);
+        // }
+
+        $ftdforBarChart = json_encode($ftdforBarChartData);
+
         return view('fon', compact(
             'fon',
             'fonPrice',
@@ -121,6 +154,8 @@ class FonController extends Controller
             'fonPriceDiffs',
             'fonPayAdetMonthly',
             'fonYatirimciSayisiMonthly',
+            'dataforAreaChart',
+            'ftdforBarChart',
         ));
     }
 }

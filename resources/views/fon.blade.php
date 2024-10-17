@@ -68,51 +68,71 @@ setlocale(LC_TIME, 'turkish');
 
     <!-- AREA CHART & FONINFO -->
     <div class="row m-2">
-        <div class="col-9">
-            @include('widgets.areaChart')
+        <div class="col-md-9">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <?php echo "<script>var dataforchart = $dataforAreaChart;</script>"; ?>
+                    <div class="chart-area">
+                        <canvas id="myAreaChart"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
             @include('widgets.foninfo')
         </div>
     </div>
     <!-- BAR CHARTS -->
     <div class="row m-2">
-        <div class="col-3">
+        <div class="col-md-3">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Fon Toplam Değer</h6>
                 </div>
                 <div class="card-body">
-                    <p>{{ number_format(
-    floatval(str_replace(',', '.', $fonPrice)) * $fonPayAdet,
-    2,
-    '.',
-    ','
-) }} ₺</p>
+                    <p>{{ number_format(floatval(str_replace(',', '.', $fonPrice)) * $fonPayAdet, 2, '.', ',') }} ₺</p>
+                    <?php echo "<script>var ftdData = $ftdforBarChart;</script>" ?>
+                    <div class="chart-bar">
+                        <canvas id="ftdBarChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Yatırımcı Sayısı</h6>
                 </div>
                 <div class="card-body">
                     <p>{{ number_format($fonYatirimciSayisi, 0, '.', ',') }}</p>
+                    <?php
+$ysforBarChart = json_encode($fonYatirimciSayisiMonthly);
+echo "<script>var ysData = $ysforBarChart;</script>"
+                    ?>
+                    <div class="chart-bar">
+                        <canvas id="ysBarChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Dolaşımdaki Pay Adedi</h6>
                 </div>
                 <div class="card-body">
                     <p>{{ number_format($fonPayAdet, 0, '.', ',') }}</p>
+                    <?php
+$dpaforBarChart = json_encode($fonPayAdetMonthly);
+echo "<script>var dpaData = $dpaforBarChart;</script>"
+                    ?>
+                    <div class="chart-bar">
+                        <canvas id="dpaBarChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Hacim Bilgileri</h6>

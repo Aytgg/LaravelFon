@@ -4,13 +4,13 @@
     </div>
     <div class="card-body">
         <?php
-            $fonDesc = json_encode($fon->description . "<br>[Kısalt]");
-            echo "<script>var fonDesc = $fonDesc;</script>";
+$fonDesc = json_encode($fon->description . "<br>[Kısalt]");
+echo "<script>var fonDesc = $fonDesc;</script>";
 
-            use Illuminate\Support\Str;
+use Illuminate\Support\Str;
 
-            $fonDescLess = json_encode(Str::limit($fon->description, 150, '<br>[Devamını gör]'));
-            echo "<script>var fonDescLess = $fonDescLess;</script>";
+$fonDescLess = json_encode(Str::limit($fon->description, 150, '<br>[Devamını gör]'));
+echo "<script>var fonDescLess = $fonDescLess;</script>";
         ?>
         <p onclick="showMore(fonDesc, fonDescLess);" id="showMoreP">
             {!! Str::limit($fon->description, 150, '<br>[Devamını gör]') !!}
@@ -20,18 +20,18 @@
                 var showMoreP = document.getElementById('showMoreP');
                 showMoreP.innerHTML = desc;
 
-                showMoreP.setAttribute('onclick', 'showLess("'+ shortDesc +'", "'+ desc +'");');
+                showMoreP.setAttribute('onclick', 'showLess("' + shortDesc + '", "' + desc + '");');
             }
             function showLess(shortDesc, desc) {
                 var showMoreP = document.getElementById('showMoreP');
                 showMoreP.innerHTML = shortDesc;
 
-                showMoreP.setAttribute('onclick', 'showMore("'+ desc +'", "'+ shortDesc +'");');
+                showMoreP.setAttribute('onclick', 'showMore("' + desc + '", "' + shortDesc + '");');
             }
         </script>
         <div class="divide-y divide-stroke-01">
             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                <span class="text-foreground-03">
+                <span class="text-dark font-weight-bold text-foreground-03">
                     Fon Kodu
                 </span>
                 <span class="float-right text-foreground-02 truncate">
@@ -39,7 +39,7 @@
                 </span>
             </div>
             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                <span class="text-foreground-03">
+                <span class="text-dark font-weight-bold text-foreground-03">
                     Kurucu
                 </span>
                 <span class="float-right text-foreground-02 truncate">
@@ -47,7 +47,7 @@
                 </span>
             </div>
             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                <span class="text-foreground-03">
+                <span class="text-dark font-weight-bold text-foreground-03">
                     Yıllık Yönetim Ücreti
                 </span>
                 <span class="float-right text-foreground-02 truncate">
@@ -55,7 +55,7 @@
                 </span>
             </div>
             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                <span class="text-foreground-03">
+                <span class="text-dark font-weight-bold text-foreground-03">
                     Risk Değeri
                 </span>
                 <span class="float-right text-foreground-02 truncate">
@@ -63,7 +63,7 @@
                 </span>
             </div>
             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                <span class="text-foreground-03">
+                <span class="text-dark font-weight-bold text-foreground-03">
                     Alış Valörü
                 </span>
                 <span class="float-right text-foreground-02 truncate">
@@ -71,7 +71,7 @@
                 </span>
             </div>
             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                <span class="text-foreground-03">
+                <span class="text-dark font-weight-bold text-foreground-03">
                     Satış Valörü
                 </span>
                 <span class="float-right text-foreground-02 truncate">
@@ -89,9 +89,13 @@
                                 d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        TEFAS'ta İşleme Açık
+                        <span class="text-success font-weight-bold">
+                            TEFAS'ta İşleme Açık
+                        </span>
                     @else
-                        TEFAS'ta İşleme Kapalı
+                        <span class="text-danger font-weight-bold">
+                            TEFAS'ta İşleme Kapalı
+                        </span>
                     @endif
                 </span>
             </div>
