@@ -37,3 +37,27 @@
         </label>
     </div>
 </div>
+
+
+
+
+
+
+
+<!-- <ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">7G</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">1A</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">3A</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">1Y</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">5Y</a>
+    </li>
+</ul> -->

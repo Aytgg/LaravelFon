@@ -33,129 +33,129 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 let myBarChart1, myBarChart2, myBarChart3;
 
 let scales1 = {
-  xAxes: [
-      {
-          time: {
-              unit: "month",
-          },
-          gridLines: {
-              display: false,
-              drawBorder: false,
-          },
-          ticks: {
-              maxTicksLimit: 6,
-          },
-          // maxBarThickness: 25,
-      },
-  ],
-  yAxes: [
-      {
-          ticks: {
-              min: 200000000000,
-              max: 400000000000,
-              maxTicksLimit: 5,
-              padding: 10,
-              // Include a dollar sign in the ticks
-              // callback: function (value, index, values) {
-              //     return /*"$" + */number_format(value) + "₺";
-              // },
-              callback: function (value, index, values) {
-                  return;
-              },
-          },
-          gridLines: {
-              color: "rgb(234, 236, 244)",
-              zeroLineColor: "rgb(234, 236, 244)",
-              drawBorder: false,
-              borderDash: [2],
-              zeroLineBorderDash: [2],
-          },
-      },
-  ],
+    xAxes: [
+        {
+            time: {
+                unit: "month",
+            },
+            gridLines: {
+                display: false,
+                drawBorder: false,
+            },
+            ticks: {
+                maxTicksLimit: 6,
+            },
+            // maxBarThickness: 25,
+        },
+    ],
+    yAxes: [
+        {
+            ticks: {
+                min: 200000000000,
+                max: 400000000000,
+                maxTicksLimit: 5,
+                padding: 10,
+                // Include a dollar sign in the ticks
+                // callback: function (value, index, values) {
+                //     return /*"$" + */number_format(value) + "₺";
+                // },
+                callback: function (value, index, values) {
+                    return;
+                },
+            },
+            gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2],
+            },
+        },
+    ],
 };
 
 let scales2 = {
-  xAxes: [
-      {
-          time: {
-              unit: "month",
-          },
-          gridLines: {
-              display: false,
-              drawBorder: false,
-          },
-          ticks: {
-              maxTicksLimit: 6,
-          },
-          // maxBarThickness: 25,
-      },
-  ],
-  yAxes: [
-      {
-          ticks: {
-              min: 40000,
-              max: 100000,
-              maxTicksLimit: 5,
-              padding: 10,
-              // Include a dollar sign in the ticks
-              // callback: function (value, index, values) {
-              //     return /*"$" + */number_format(value) + "₺";
-              // },
-              callback: function (value, index, values) {
-                  return;
-              },
-          },
-          gridLines: {
-              color: "rgb(234, 236, 244)",
-              zeroLineColor: "rgb(234, 236, 244)",
-              drawBorder: false,
-              borderDash: [2],
-              zeroLineBorderDash: [2],
-          },
-      },
-  ],
+    xAxes: [
+        {
+            time: {
+                unit: "month",
+            },
+            gridLines: {
+                display: false,
+                drawBorder: false,
+            },
+            ticks: {
+                maxTicksLimit: 6,
+            },
+            // maxBarThickness: 25,
+        },
+    ],
+    yAxes: [
+        {
+            ticks: {
+                min: 40000,
+                max: 100000,
+                maxTicksLimit: 5,
+                padding: 10,
+                // Include a dollar sign in the ticks
+                // callback: function (value, index, values) {
+                //     return /*"$" + */number_format(value) + "₺";
+                // },
+                callback: function (value, index, values) {
+                    return;
+                },
+            },
+            gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2],
+            },
+        },
+    ],
 };
 
 let scales3 = {
-  xAxes: [
-      {
-          time: {
-              unit: "month",
-          },
-          gridLines: {
-              display: false,
-              drawBorder: false,
-          },
-          ticks: {
-              maxTicksLimit: 6,
-          },
-          // maxBarThickness: 25,
-      },
-  ],
-  yAxes: [
-      {
-          ticks: {
-              min: 400000000,
-              max: 1000000000,
-              maxTicksLimit: 5,
-              padding: 10,
-              // Include a dollar sign in the ticks
-              // callback: function (value, index, values) {
-              //     return /*"$" + */number_format(value) + "₺";
-              // },
-              callback: function (value, index, values) {
-                  return;
-              },
-          },
-          gridLines: {
-              color: "rgb(234, 236, 244)",
-              zeroLineColor: "rgb(234, 236, 244)",
-              drawBorder: false,
-              borderDash: [2],
-              zeroLineBorderDash: [2],
-          },
-      },
-  ],
+    xAxes: [
+        {
+            time: {
+                unit: "month",
+            },
+            gridLines: {
+                display: false,
+                drawBorder: false,
+            },
+            ticks: {
+                maxTicksLimit: 6,
+            },
+            // maxBarThickness: 25,
+        },
+    ],
+    yAxes: [
+        {
+            ticks: {
+                min: 400000000,
+                max: 1000000000,
+                maxTicksLimit: 5,
+                padding: 10,
+                // Include a dollar sign in the ticks
+                // callback: function (value, index, values) {
+                //     return /*"$" + */number_format(value) + "₺";
+                // },
+                callback: function (value, index, values) {
+                    return;
+                },
+            },
+            gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2],
+            },
+        },
+    ],
 };
 
 var ctx1 = document.getElementById("ftdBarChart");
@@ -168,8 +168,8 @@ setTimeout(() => {
     newChart(myBarChart3, dpaData, scales3, ctx3);
 }, 100);
 
-async function newChart(chart, ftdData, scales, ctx) {
-    chart = await new Chart(ctx, {
+function newChart(chart, ftdData, scales, ctx) {
+    chart = new Chart(ctx, {
         type: "bar",
         data: {
             labels: ["1", "2", "3", "4", "5", "6"],
