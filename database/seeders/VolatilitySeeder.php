@@ -17,7 +17,10 @@ class VolatilitySeeder extends Seeder
      */
     public function run(): void
     {
-        define("SQLFILE", 'database\seeders\volatility.sql');
-        DB::unprepared(File::get(SQLFILE));
+        define("SQLFILE1", 'database\seeders\volatility1.sql');
+        DB::unprepared(File::get(SQLFILE1));
+
+        define("SQLFILE2", 'database\seeders\volatility1.sql');
+        DB::unprepared(File::get(SQLFILE2));
     }
 }
