@@ -28,102 +28,176 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
-// Area Chart Example
+// GET DATA FROM PHP AND USE IT
 
-// dataforvolatility
+var ctxLine1 = document.getElementById("priceAreaChart");
+var ctxLine2 = document.getElementById("volatilityAreaChart");
+var myLineChart1, myLineChart2;
 
-// VOLATILITY CHART
-
-var ctxVolatility = document.getElementById("volatilityAreaChart");
-var Labels = "123".split("");
-
-setTimeout(() => {
-    newChart(ctxVolatility, dataforvolatility.reverse(), Labels);
-}, 100);
-
-// PRICE CHART
-
+// Price Chart Part
 var period = 0;
 
-var neededPriceData = dataforprice.slice(0, 7);
-var neededPrices = [];
-var neededPriceLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+var normalData = dataforprice.slice(0, 7);
+var dataArr = [];
+var labels = Array.from({ length: 7 }, (_, i) => i + 1);
 
-var myLineChart;
+function reverseData(normalData) {
+    dataArr = [];
+    normalData.forEach((data) => {
+        dataArr.push(data);
+    });
+
+    dataArr.reverse();
+
+    return dataArr;
+}
 
 document.getElementsByName("options").forEach(function (radio) {
     radio.addEventListener("click", function () {
         period = parseInt(radio.id.slice(-1));
         switch (period) {
             case 0:
-                neededPriceData = dataforprice.slice(0, 7);
-                neededPriceLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+                normalData = dataforprice.slice(0, 7);
+                labels = Array.from({ length: 7 }, (_, i) => i + 1);
                 break;
             case 1:
-                neededPriceData = dataforprice.slice(0, 30);
-                neededPriceLabels = Array.from({ length: 30 }, (_, i) => i + 1);
+                normalData = dataforprice.slice(0, 30);
+                labels = Array.from({ length: 30 }, (_, i) => i + 1);
                 break;
             case 2:
-                neededPriceData = dataforprice.slice(0, 30 * 3);
-                neededPriceLabels = Array.from(
-                    { length: 30 * 3 },
-                    (_, i) => i + 1
-                );
+                normalData = dataforprice.slice(0, 30 * 3);
+                labels = Array.from({ length: 30 * 3 }, (_, i) => i + 1);
                 break;
             case 3:
-                neededPriceData = dataforprice.slice(0, 365);
-                neededPriceLabels = Array.from(
-                    { length: 365 },
-                    (_, i) => i + 1
-                );
+                normalData = dataforprice.slice(0, 365);
+                labels = Array.from({ length: 365 }, (_, i) => i + 1);
                 break;
             case 4:
-                neededPriceData = dataforprice.slice(0, 365 * 3);
-                neededPriceLabels = Array.from(
-                    { length: 365 * 3 },
-                    (_, i) => i + 1
-                );
+                normalData = dataforprice.slice(0, 365 * 3);
+                labels = Array.from({ length: 365 * 3 }, (_, i) => i + 1);
 
                 break;
             default:
-                neededPriceData = dataforprice.slice(0, 7);
-                neededPriceLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+                normalData = dataforprice.slice(0, 7);
+                labels = Array.from({ length: 7 }, (_, i) => i + 1);
                 break;
         }
 
-        if (myLineChart) myLineChart.destroy();
-        newChart(
-            ctxPrice,
-            neededDataToNeededPrices(neededPriceData),
-            neededPriceLabels
-        );
+        if (myLineChart1) myLineChart1.destroy();
+        // if (ctxLine1) ctxLine1.destroy();
+
+        setTimeout(() => {
+            newLineChart(
+                myLineChart1,
+                reverseData(normalData),
+                labels,
+                scalesLine1,
+                ctxLine1
+            );
+        }, 100);
     });
 });
+// Price Chart Part END
 
-var ctxPrice = document.getElementById("priceAreaChart");
+let scalesLine1 = {
+    xAxes: [
+        {
+            time: {
+                unit: "date",
+            },
+            gridLines: {
+                display: false,
+                drawBorder: false,
+            },
+            ticks: {
+                maxTicksLimit: 30,
+            },
+        },
+    ],
+    yAxes: [
+        {
+            ticks: {
+                maxTicksLimit: 5,
+                padding: 10,
+                // Include a dollar sign in the ticks
+                callback: function (value, index, values) {
+                    return number_format(value) + "₺";
+                },
+            },
+            gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2],
+            },
+        },
+    ],
+};
+
+let scalesLine2 = {
+    xAxes: [
+        {
+            time: {
+                unit: "date",
+            },
+            gridLines: {
+                display: false,
+                drawBorder: false,
+            },
+            ticks: {
+                maxTicksLimit: 30,
+            },
+        },
+    ],
+    yAxes: [
+        {
+            ticks: {
+                min: 20,
+                max: 40,
+                maxTicksLimit: 5,
+                padding: 10,
+                // Include a dollar sign in the ticks
+                callback: function (value, index, values) {
+                    return number_format(value) + "₺";
+                },
+            },
+            gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2],
+            },
+        },
+    ],
+};
+
+// Area Chart Example
 
 setTimeout(() => {
-    newChart(
-        ctxPrice,
-        neededDataToNeededPrices(neededPriceData),
-        neededPriceLabels
+    newLineChart(
+        myLineChart1,
+        reverseData(normalData),
+        labels,
+        scalesLine1,
+        ctxLine1
+    );
+    newLineChart(
+        myLineChart2,
+        reverseData(dataforvolatility),
+        labels,
+        scalesLine2,
+        ctxLine2
     );
 }, 100);
 
-function neededDataToNeededPrices(neededPriceData) {
-    neededPrices = [];
-    neededPriceData.forEach((data) => {
-        neededPrices.push(data.price);
-    });
-
-    return neededPrices.reverse();
-}
-
-function newChart(ctx, useThisData, LabelData) {
-    myLineChart = new Chart(ctx, {
+function newLineChart(chart, data, labels, scales, ctx) {
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
         type: "line",
         data: {
-            labels: LabelData, //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: labels,
             datasets: [
                 {
                     label: "Fiyat",
@@ -138,7 +212,7 @@ function newChart(ctx, useThisData, LabelData) {
                     pointHoverBorderColor: "rgba(78, 115, 223, 1)",
                     pointHitRadius: 10,
                     pointBorderWidth: 2,
-                    data: useThisData,
+                    data: data,
                 },
             ],
         },
@@ -152,41 +226,7 @@ function newChart(ctx, useThisData, LabelData) {
                     bottom: 0,
                 },
             },
-            scales: {
-                xAxes: [
-                    {
-                        time: {
-                            unit: "date",
-                        },
-                        gridLines: {
-                            display: false,
-                            drawBorder: false,
-                        },
-                        ticks: {
-                            maxTicksLimit: 30,
-                        },
-                    },
-                ],
-                yAxes: [
-                    {
-                        ticks: {
-                            maxTicksLimit: 5,
-                            padding: 10,
-                            // Include a dollar sign in the ticks
-                            callback: function (value, index, values) {
-                                return number_format(value) + "₺";
-                            },
-                        },
-                        gridLines: {
-                            color: "rgb(234, 236, 244)",
-                            zeroLineColor: "rgb(234, 236, 244)",
-                            drawBorder: false,
-                            borderDash: [2],
-                            zeroLineBorderDash: [2],
-                        },
-                    },
-                ],
-            },
+            scales: scales,
             legend: {
                 display: false,
             },

@@ -472,7 +472,7 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
                 <div class="card-body">
                     <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
                     <div class="chart-area">
-                        <canvas id="volatilityAreaChart"></canvas>
+                        <canvas id="wh1000AreaChart"></canvas>
                     </div>
                 </div>
             </div>

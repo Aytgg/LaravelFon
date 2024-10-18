@@ -32,7 +32,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 let myBarChart1, myBarChart2, myBarChart3;
 
-let scales1 = {
+let scalesBar1 = {
     xAxes: [
         {
             time: {
@@ -74,7 +74,7 @@ let scales1 = {
     ],
 };
 
-let scales2 = {
+let scalesBar2 = {
     xAxes: [
         {
             time: {
@@ -116,7 +116,7 @@ let scales2 = {
     ],
 };
 
-let scales3 = {
+let scalesBar3 = {
     xAxes: [
         {
             time: {
@@ -158,18 +158,18 @@ let scales3 = {
     ],
 };
 
-var ctx1 = document.getElementById("ftdBarChart");
-var ctx2 = document.getElementById("ysBarChart");
-var ctx3 = document.getElementById("dpaBarChart");
+var ctxBar1 = document.getElementById("ftdBarChart");
+var ctxBar2 = document.getElementById("ysBarChart");
+var ctxBar3 = document.getElementById("dpaBarChart");
 
 setTimeout(() => {
-    newChart(myBarChart1, ftdData, scales1, ctx1);
-    newChart(myBarChart2, ysData, scales2, ctx2);
-    newChart(myBarChart3, dpaData, scales3, ctx3);
+    newChart(myBarChart1, ftdData, scalesBar1, ctxBar1);
+    newChart(myBarChart2, ysData, scalesBar2, ctxBar2);
+    newChart(myBarChart3, dpaData, scalesBar3, ctxBar3);
 }, 100);
 
-function newChart(chart, ftdData, scales, ctx) {
-    chart = new Chart(ctx, {
+function newChart(chartVar, data, scales, ctx) {
+    chartVar = new Chart(ctx, {
         type: "bar",
         data: {
             labels: ["1", "2", "3", "4", "5", "6"],
@@ -179,7 +179,7 @@ function newChart(chart, ftdData, scales, ctx) {
                     backgroundColor: "#4e73df",
                     hoverBackgroundColor: "#2e59d9",
                     borderColor: "#4e73df",
-                    data: ftdData,
+                    data: data,
                 },
             ],
         },
@@ -225,4 +225,4 @@ function newChart(chart, ftdData, scales, ctx) {
             },
         },
     });
-}
+};
