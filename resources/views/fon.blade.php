@@ -457,6 +457,7 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
             </div>
         </div>
     </div>
+    <!-- WH1000 CHART -->
     <div class="row m-2">
         <div class="col-md-12 col-lg-9">
             <div class="card shadow mb-4">
@@ -464,20 +465,41 @@ echo "<script>var dpaData = $dpaforBarChart;</script>"
                     <!-- <h6 class="m-0 font-weight-bold text-primary d-inline-flex">1.000₺ Ne Oldu?</h6> -->
                     <h6 class="m-0 font-weight-bold text-primary">1.000₺ Ne Oldu?</h6>
                     <div class="float-right">
-                        <h6 class="d-inline m-2">1A</h6>
-                        <h6 class="d-inline m-2">3A</h6>
-                        <h6 class="d-inline m-2">6A</h6>
+                        <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
+                            <label class="btn btn-sm btn-primary btn-simple" id="9">
+                                <input id="radio9" type="radio" class="d-none d-sm-none" name="options">
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1A</span>
+                                <span class="d-block d-sm-none">
+                                    <i class="tim-icons icon-gift-2"></i>
+                                </span>
+                            </label>
+                            <label class="btn btn-sm btn-primary btn-simple" id="8">
+                                <input id="radio8" type="radio" class="d-none" name="options">
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3A</span>
+                                <span class="d-block d-sm-none">
+                                    <i class="tim-icons icon-tap-02"></i>
+                                </span>
+                            </label>
+                            <label class="btn btn-sm btn-primary btn-simple" id="7">
+                                <input id="radio7" type="radio" class="d-none" name="options">
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">6A</span>
+                                <span class="d-block d-sm-none">
+                                    <i class="tim-icons icon-tap-02"></i>
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
-                    <div class="chart-area">
-                        <canvas id="wh1000AreaChart"></canvas>
+                    <?php echo "<script>var wh1000Data = $wh1000forBarChart;</script>"; ?>
+                    <div class="chart-bar">
+                        <canvas id="wh1000BarChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- VOLATILITY CHART -->
     <div class="row m-2">
         <div class="col-md-12 col-lg-9">
             <div class="card shadow mb-4">

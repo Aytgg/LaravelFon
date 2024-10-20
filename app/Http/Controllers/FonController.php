@@ -96,6 +96,7 @@ class FonController extends Controller
             $ftdforBarChartData =
             $fonVolatilityForChart = [];
 
+        // fonPayAdetMonthly - fonYatirimciSayisiMonthly - fonPriceMonthly
         for ($i = 6; $i > 0; $i--) {
             array_push($fonPayAdetMonthly, getDataMonthly(
                 $fon,
@@ -122,6 +123,7 @@ class FonController extends Controller
             ));
         }
 
+        // fonPriceDiffs
         foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
             $fonPriceDiffs[$diff] = getFonPriceDiff(
                 $fon,
@@ -131,23 +133,31 @@ class FonController extends Controller
             );
         }
 
+        // fonpricesForChart
         $fonprices->each(function ($item) use (&$fonpricesForChart) {
             array_push($fonpricesForChart, $item->price);
         });
 
+        // fonVolatilityForChart
         $fonVolatility->each(function ($item) use (&$fonVolatilityForChart) {
             array_push($fonVolatilityForChart, $item->volatility);
         });
 
+        // wh1000forBarChart --- STATIC DATA
+        $wh1000forBarChart = [
+            '1Month' => [1020, 984, 925, 909, 901],
+            '3Month' => [1037, 1036, 1005, 803, 788],
+            '6Month' => [1189, 1076, 1055, 928, 907],
+        ];
+
+        // priceforAreaChart - volatilityforAreaChart - wh1000forLineChart
         $priceforAreaChart = json_encode($fonpricesForChart);
         $volatilityforAreaChart = json_encode($fonVolatilityForChart);
+        $wh1000forBarChart = json_encode($wh1000forBarChart);
 
+        // ftdforBarChartData
         for ($i = 0; $i < 6; $i++)
             array_push($ftdforBarChartData, $fonPayAdetMonthly[$i] * $fonPriceMonthly[$i]);
-
-        // foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
-        //     array_push($ftdforBarChartData, $fonPriceDiffs[$diff]);
-        // }
 
         $ftdforBarChart = json_encode($ftdforBarChartData);
 
@@ -162,6 +172,7 @@ class FonController extends Controller
             'fonYatirimciSayisiMonthly',
             'priceforAreaChart',
             'ftdforBarChart',
+            'wh1000forBarChart',
             'volatilityforAreaChart'
         ));
     }
