@@ -28,8 +28,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
-// GET DATA FROM PHP AND USE IT
-
 var ctxLine1_1 = document.getElementById("priceArea7G");
 var ctxLine1_2 = document.getElementById("priceArea1A");
 var ctxLine1_3 = document.getElementById("priceArea3A");
@@ -277,9 +275,8 @@ let scalesBar = [
         yAxes: [
             {
                 ticks: {
-                    // MIN-MAX DEĞİŞKEN DEĞİL
-                    min: Math.min(...wh1000Data["3A"]),
-                    max: Math.max(...wh1000Data["6A"]),
+                    min: Math.min(...wh1000Data["1A"].concat(wh1000Data["3A"], wh1000Data["6A"])),
+                    max: Math.max(...wh1000Data["1A"].concat(wh1000Data["3A"], wh1000Data["6A"])),
                     // maxTicksLimit: 17,
                     padding: 10,
                     // Include a dollar sign in the ticks
@@ -356,7 +353,7 @@ var labelsLine = [
 ];
 var labelsBar = [
     ["1", "2", "3", "4", "5", "6"],
-    ["1", "2", "3", "4", "5"],
+    ["USDTRY", "EURTRY", "IPB", "XU030", "XU100"],
     Array.from({ length: 10 }, (_, i) => i + 1)
 ];
 
@@ -670,9 +667,9 @@ function newVsdBarChart(chartVar, data, scales, labels, ctx) {
                             "";
                         return (
                             datasetLabel +
-                            ": " +
-                            number_format(tooltipItem.yLabel) +
-                            "₺"
+                            ": %" +
+                            number_format(tooltipItem.yLabel)// +
+                            // "₺"
                         );
                     },
                 },

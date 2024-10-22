@@ -53,41 +53,6 @@ class FonController extends Controller
         $time = new DateTime($fonPriceLast->date);
         $time = $time->format('Y-m-d');
 
-        function getFonPriceDiff($fon, $date, $diff, $fonPrice)
-        {
-            $fonPriceOld = DB::table('fonprices')
-                ->where('fon_id', $fon->id)
-                ->where(
-                    'date',
-                    (new DateTime($date))->modify($diff)->format('Y-m-d')
-                )
-                ->first()
-                ->price;
-
-            return number_format(($fonPrice - $fonPriceOld) / $fonPriceOld * 100, 2);
-        }
-
-        function getDataMonthly($fon, $date, $diff, $table, $column)
-        {
-            return intval(
-                round(
-                    DB::table($table)
-                        ->where('fon_id', $fon->id)
-                        ->where(
-                            'date',
-                            '>',
-                            (new DateTime($date))->modify($diff)->format('Y-m-d')
-                        )
-                        ->where(
-                            'date',
-                            '<',
-                            (new DateTime($date))->modify($diff)->modify('+1 month')->format('Y-m-d')
-                        )
-                        ->avg($column)
-                )
-            );
-        }
-
         $fonPayAdetMonthly =
             $fonYatirimciSayisiMonthly =
             $fonPriceMonthly =
@@ -98,7 +63,7 @@ class FonController extends Controller
 
         // fonPayAdetMonthly - fonYatirimciSayisiMonthly - fonPriceMonthly
         for ($i = 6; $i > 0; $i--) {
-            array_push($fonPayAdetMonthly, getDataMonthly(
+            array_push($fonPayAdetMonthly, $this->getDataMonthly(
                 $fon,
                 $time,
                 '-' . $i . ' month',
@@ -106,7 +71,7 @@ class FonController extends Controller
                 'payAdet'
             ));
 
-            array_push($fonYatirimciSayisiMonthly, getDataMonthly(
+            array_push($fonYatirimciSayisiMonthly, $this->getDataMonthly(
                 $fon,
                 $time,
                 '-' . $i . ' month',
@@ -114,7 +79,7 @@ class FonController extends Controller
                 'yatirimciSayisi'
             ));
 
-            array_push($fonPriceMonthly, getDataMonthly(
+            array_push($fonPriceMonthly, $this->getDataMonthly(
                 $fon,
                 $time,
                 '-' . $i . ' month',
@@ -125,7 +90,7 @@ class FonController extends Controller
 
         // fonPriceDiffs
         foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
-            $fonPriceDiffs[$diff] = getFonPriceDiff(
+            $fonPriceDiffs[$diff] = $this->getFonPriceDiff(
                 $fon,
                 $time,
                 '-' . substr($diff, 0, 1) . ' ' . strtolower(substr($diff, 1)),
@@ -169,9 +134,9 @@ class FonController extends Controller
 
         // wh1000forBarChart --- STATIC DATA
         $wh1000forBarChart = [
-            '1A' => [1020, 984, 925, 909, 901],
-            '3A' => [1037, 1036, 1005, 803, 788],
-            '6A' => [1189, 1076, 1055, 928, 907],
+            '1A' => [1020, 970, 897, 894, 893],
+            '3A' => [1042, 1038, 964, 812, 797],
+            '6A' => [1052, 1063, 1145, 930, 909],
         ];
 
         foreach (['1A', '3A', '6A'] as $period)
@@ -216,5 +181,40 @@ class FonController extends Controller
             'volatilityforAreaChart',
             'vsdforBarChart'
         ));
+    }
+
+    function getFonPriceDiff($fon, $date, $diff, $fonPrice)
+    {
+        $fonPriceOld = DB::table('fonprices')
+            ->where('fon_id', $fon->id)
+            ->where(
+                'date',
+                (new DateTime($date))->modify($diff)->format('Y-m-d')
+            )
+            ->first()
+            ->price;
+
+        return number_format(($fonPrice - $fonPriceOld) / $fonPriceOld * 100, 2);
+    }
+
+    function getDataMonthly($fon, $date, $diff, $table, $column)
+    {
+        return intval(
+            round(
+                DB::table($table)
+                    ->where('fon_id', $fon->id)
+                    ->where(
+                        'date',
+                        '>',
+                        (new DateTime($date))->modify($diff)->format('Y-m-d')
+                    )
+                    ->where(
+                        'date',
+                        '<',
+                        (new DateTime($date))->modify($diff)->modify('+1 month')->format('Y-m-d')
+                    )
+                    ->avg($column)
+            )
+        );
     }
 }
