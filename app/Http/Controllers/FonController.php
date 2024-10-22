@@ -138,10 +138,34 @@ class FonController extends Controller
             array_push($fonpricesForChart, $item->price);
         });
 
+        $fonpricesForChartLast = [
+            '7G' => [],
+            '1A' => [],
+            '3A' => [],
+            '1Y' => [],
+            '3Y' => []
+        ];
+
+        for ($i = 0; $i < 365 * 3; $i++)
+            array_push($fonpricesForChartLast['3Y'], $fonpricesForChart[$i]);
+        for ($i = 0; $i < 365; $i++)
+            array_push($fonpricesForChartLast['1Y'], $fonpricesForChart[$i]);
+        for ($i = 0; $i < 30 * 3; $i++)
+            array_push($fonpricesForChartLast['3A'], $fonpricesForChart[$i]);
+        for ($i = 0; $i < 30; $i++)
+            array_push($fonpricesForChartLast['1A'], $fonpricesForChart[$i]);
+        for ($i = 0; $i < 7; $i++)
+            array_push($fonpricesForChartLast['7G'], $fonpricesForChart[$i]);
+
+        foreach ($fonpricesForChartLast as $period => $data)
+            $fonpricesForChartLast[$period] = array_reverse($data);
+
         // fonVolatilityForChart
         $fonVolatility->each(function ($item) use (&$fonVolatilityForChart) {
             array_push($fonVolatilityForChart, $item->volatility);
         });
+
+        $fonVolatilityForChart = array_reverse($fonVolatilityForChart);
 
         // wh1000forBarChart --- STATIC DATA
         $wh1000forBarChart = [
@@ -151,7 +175,7 @@ class FonController extends Controller
         ];
 
         // priceforAreaChart - volatilityforAreaChart - wh1000forLineChart
-        $priceforAreaChart = json_encode($fonpricesForChart);
+        $priceforAreaChart = json_encode($fonpricesForChartLast);
         $volatilityforAreaChart = json_encode($fonVolatilityForChart);
         $wh1000forBarChart = json_encode($wh1000forBarChart);
 
