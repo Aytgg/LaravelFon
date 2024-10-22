@@ -169,9 +169,24 @@ class FonController extends Controller
 
         // wh1000forBarChart --- STATIC DATA
         $wh1000forBarChart = [
-            '1Month' => [1020, 984, 925, 909, 901],
-            '3Month' => [1037, 1036, 1005, 803, 788],
-            '6Month' => [1189, 1076, 1055, 928, 907],
+            '1A' => [1020, 984, 925, 909, 901],
+            '3A' => [1037, 1036, 1005, 803, 788],
+            '6A' => [1189, 1076, 1055, 928, 907],
+        ];
+
+        foreach (['1A', '3A', '6A'] as $period)
+            for ($i = 0; $i < 5; $i++)
+                $wh1000forBarChart[$period][$i] -= 1000;
+
+        // vsdforBarChart --- STATIC DATA
+        $vsdforBarChart = [
+            'HS' => [60.43, 61.53, 61.44, 61.86, 62.28, 63.06, 62.64, 62.14, 62.08, 62.76],
+            'YYF' => [16.73, 17.26, 17.10, 17.21, 17.60, 17.74, 16.86, 17.42, 17.88, 15.65],
+            'YHS' => [11.01, 11.41, 11.40, 11.46, 11.66, 11.79, 11.77, 12.09, 12.81, 13.05],
+            'TR' => [4.81, 0, 2.94, 0, 0, 0, 0, 0, 0, 0],
+            'VİNT' => [2.36, 2.43, 2.42, 2.44, 2.50, 2.53, 2.52, 2.61, 2.74, 2.81],
+            'GSYKB' => [0, 2.41, 0, 2.38, 2.44, 2.46, 2.44, 2.52, 2.64, 2.71],
+            'Kalanlar' => [4.66, 4.96, 4.70, 4.65, 3.52, 2.42, 3.77, 3.22, 1.85, 3.02]
         ];
 
         // priceforAreaChart - volatilityforAreaChart - wh1000forLineChart
@@ -184,6 +199,7 @@ class FonController extends Controller
             array_push($ftdforBarChartData, $fonPayAdetMonthly[$i] * $fonPriceMonthly[$i]);
 
         $ftdforBarChart = json_encode($ftdforBarChartData);
+        $vsdforBarChart = json_encode($vsdforBarChart);
 
         return view('fon', compact(
             'fon',
@@ -197,7 +213,8 @@ class FonController extends Controller
             'priceforAreaChart',
             'ftdforBarChart',
             'wh1000forBarChart',
-            'volatilityforAreaChart'
+            'volatilityforAreaChart',
+            'vsdforBarChart'
         ));
     }
 }

@@ -519,9 +519,9 @@
                                     class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['6Month'] }}</span>
                             </div>
                             <!-- <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                                                            <span class="text-foreground-03">YTD</span>
-                                                            <span class="float-right text-foreground-02 truncate">%???</span>
-                                                        </div> -->
+                                                                            <span class="text-foreground-03">YTD</span>
+                                                                            <span class="float-right text-foreground-02 truncate">%???</span>
+                                                                        </div> -->
                             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                                 <span class="text-foreground-03">1 Yıl</span>
                                 <span
@@ -542,43 +542,80 @@
                 </div>
             </div>
         </div>
+        <!-- BAR SCATTER CHART -->
+        <div class="row m-2">
+            <div class="col-md-12 col-lg-9">
+                <div class="card shadow mb-4">
+                    <div class="card-header py3">
+                        <h6 class="m-0 font-weight-bold text-primary">Varlık Sınıfı Dağılımı</h6>
+                    </div>
+                    <div class="card-body">
+                        <?php echo "<script>var dataforvsd = $vsdforBarChart;</script>" ?>
+                        <div class="chart-bar">
+                            <canvas id="vsdBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- WH1000 CHART -->
         <div class="row m-2">
+            <?php echo "<script>var wh1000Data = $wh1000forBarChart;</script>"; ?>
             <div class="col-md-12 col-lg-9">
                 <div class="card shadow mb-4">
                     <div class="card-header py3 d-inline-flex justify-content-between">
                         <!-- <h6 class="m-0 font-weight-bold text-primary d-inline-flex">1.000₺ Ne Oldu?</h6> -->
                         <h6 class="m-0 font-weight-bold text-primary">1.000₺ Ne Oldu?</h6>
                         <div class="float-right">
-                            <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
-                                <label class="btn btn-sm btn-primary btn-simple" id="9">
-                                    <input id="radio9" type="radio" class="d-none d-sm-none" name="options">
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1A</span>
-                                    <span class="d-block d-sm-none">
-                                        <i class="tim-icons icon-gift-2"></i>
-                                    </span>
-                                </label>
-                                <label class="btn btn-sm btn-primary btn-simple" id="8">
-                                    <input id="radio8" type="radio" class="d-none" name="options">
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3A</span>
-                                    <span class="d-block d-sm-none">
-                                        <i class="tim-icons icon-tap-02"></i>
-                                    </span>
-                                </label>
-                                <label class="btn btn-sm btn-primary btn-simple" id="7">
-                                    <input id="radio7" type="radio" class="d-none" name="options">
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">6A</span>
-                                    <span class="d-block d-sm-none">
-                                        <i class="tim-icons icon-tap-02"></i>
-                                    </span>
-                                </label>
+                            <div class="btn-group btn-group-toggle float-left">
+                                <div class="row ml-1 my-3">
+                                    <div class="col-sm-6">
+                                        <ul class="nav nav-tabs btn-group btn-group-toggle float-right" role="tablist">
+                                            <li role="presentation">
+                                                <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart1A"
+                                                    aria-controls="profile" role="tab" data-toggle="tab">
+                                                    1A
+                                                </a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart3A"
+                                                    aria-controls="profile" role="tab" data-toggle="tab">
+                                                    3A
+                                                </a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart6A"
+                                                    aria-controls="profile" role="tab" data-toggle="tab">
+                                                    6Y
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <?php echo "<script>var wh1000Data = $wh1000forBarChart;</script>"; ?>
-                        <div class="chart-bar">
-                            <canvas id="wh1000BarChart"></canvas>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="wh1000Chart1A">
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <canvas id="wh1000Bar1A"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="wh1000Chart3A">
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <canvas id="wh1000Bar3A"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="wh1000Chart6A">
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <canvas id="wh1000Bar6A"></canvas>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

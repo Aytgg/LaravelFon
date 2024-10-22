@@ -39,7 +39,10 @@ var ctxLine2 = document.getElementById("volatilityAreaChart");
 var ctxBar1 = document.getElementById("ftdBarChart");
 var ctxBar2 = document.getElementById("ysBarChart");
 var ctxBar3 = document.getElementById("dpaBarChart");
-var ctxBar4 = document.getElementById("wh1000BarChart");
+var ctxBar4_1 = document.getElementById("wh1000Bar1A");
+var ctxBar4_2 = document.getElementById("wh1000Bar3A");
+var ctxBar4_3 = document.getElementById("wh1000Bar6A");
+var ctxBar5 = document.getElementById("vsdBarChart");
 
 var myLineChart1_1,
     myLineChart1_2,
@@ -47,7 +50,13 @@ var myLineChart1_1,
     myLineChart1_4,
     myLineChart1_5,
     myLineChart2;
-var myBarChart1, myBarChart2, myBarChart3, myBarChart4;
+var myBarChart1,
+    myBarChart2,
+    myBarChart3,
+    myBarChart4_1,
+    myBarChart4_2,
+    myBarChart4_3,
+    myBarChart5;
 
 let scalesLine = [
     {
@@ -269,8 +278,8 @@ let scalesBar = [
             {
                 ticks: {
                     // MIN-MAX DEĞİŞKEN DEĞİL
-                    min: Math.min(...wh1000Data["3Month"]) - 1000,
-                    max: Math.max(...wh1000Data["6Month"]) - 1000,
+                    min: Math.min(...wh1000Data["3A"]),
+                    max: Math.max(...wh1000Data["6A"]),
                     // maxTicksLimit: 17,
                     padding: 10,
                     // Include a dollar sign in the ticks
@@ -279,6 +288,50 @@ let scalesBar = [
                     // },
                     callback: function (value, index, values) {
                         return number_format(value + 1000) + "₺";
+                    },
+                },
+                gridLines: {
+                    color: "rgb(234, 236, 244)",
+                    zeroLineColor: "rgb(234, 236, 244)",
+                    drawBorder: false,
+                    borderDash: [2],
+                    zeroLineBorderDash: [2],
+                },
+            },
+        ],
+    },
+    // vsd Chart
+    {
+        xAxes: [
+            {
+                stacked: true,
+                time: {
+                    unit: "month",
+                },
+                gridLines: {
+                    display: false,
+                    drawBorder: false,
+                },
+                ticks: {
+                    // maxTicksLimit: 5,
+                },
+                // maxBarThickness: 25,
+            },
+        ],
+        yAxes: [
+            {
+                stacked: true,
+                ticks: {
+                    min: 0,
+                    max: 100,
+                    // maxTicksLimit: 17,
+                    padding: 10,
+                    // Include a dollar sign in the ticks
+                    // callback: function (value, index, values) {
+                    //     return /*"$" + */number_format(value) + "₺";
+                    // },
+                    callback: function (value, index, values) {
+                        return number_format(value) + "₺";
                     },
                 },
                 gridLines: {
@@ -304,48 +357,8 @@ var labelsLine = [
 var labelsBar = [
     ["1", "2", "3", "4", "5", "6"],
     ["1", "2", "3", "4", "5"],
+    Array.from({ length: 10 }, (_, i) => i + 1)
 ];
-
-// wh1000 period selector & more
-whPeriod = "1Month";
-{
-    document.getElementsByName("options").forEach(function (radio) {
-        let period;
-        radio.addEventListener("click", function () {
-            period = parseInt(radio.id.slice(-1));
-            switch (period) {
-                case 9:
-                    whPeriod = "1Month";
-                    break;
-                case 8:
-                    whPeriod = "3Month";
-                    break;
-                case 7:
-                    whPeriod = "6Month";
-                    break;
-                default:
-                    console.log("Invalid period of (radio.id) :" + radio.id);
-            }
-
-            // if (myLineChart1) myLineChart1.destroy();
-            // if (ctxLine1) ctxLine1.destroy();
-
-            if (period > 6)
-                newBarChart(
-                    myBarChart4,
-                    wh1000Data[whPeriod],
-                    scalesBar[3],
-                    labelsBar[1],
-                    ctxBar4
-                );
-        });
-    });
-
-    for (let i = 0; i < 6; i++)
-        ["1Month", "3Month", "6Month"].forEach((period) => {
-            wh1000Data[period][i] -= 1000;
-        });
-}
 
 // Call newChart functions
 {
@@ -355,7 +368,7 @@ whPeriod = "1Month";
             // 7G
             newLineChart(
                 myLineChart1_1,
-                dataforprice['7G'],
+                dataforprice["7G"],
                 labelsLine[0],
                 scalesLine[0],
                 ctxLine1_1
@@ -363,7 +376,7 @@ whPeriod = "1Month";
             // 1A
             newLineChart(
                 myLineChart1_2,
-                dataforprice['1A'],
+                dataforprice["1A"],
                 labelsLine[1],
                 scalesLine[0],
                 ctxLine1_2
@@ -371,7 +384,7 @@ whPeriod = "1Month";
             // 3A
             newLineChart(
                 myLineChart1_3,
-                dataforprice['3A'],
+                dataforprice["3A"],
                 labelsLine[2],
                 scalesLine[0],
                 ctxLine1_3
@@ -379,7 +392,7 @@ whPeriod = "1Month";
             // 1Y
             newLineChart(
                 myLineChart1_4,
-                dataforprice['1Y'],
+                dataforprice["1Y"],
                 labelsLine[3],
                 scalesLine[0],
                 ctxLine1_4
@@ -387,7 +400,7 @@ whPeriod = "1Month";
             // 3Y
             newLineChart(
                 myLineChart1_5,
-                dataforprice['3Y'],
+                dataforprice["3Y"],
                 labelsLine[4],
                 scalesLine[0],
                 ctxLine1_5
@@ -409,14 +422,32 @@ whPeriod = "1Month";
         newBarChart(myBarChart1, ftdData, scalesBar[0], labelsBar[0], ctxBar1);
         newBarChart(myBarChart2, ysData, scalesBar[1], labelsBar[0], ctxBar2);
         newBarChart(myBarChart3, dpaData, scalesBar[2], labelsBar[0], ctxBar3);
-        // Wh1000 Chart
-        newBarChart(
-            myBarChart4,
-            wh1000Data[whPeriod],
-            scalesBar[3],
-            labelsBar[1],
-            ctxBar4
-        );
+        // Wh1000 Charts
+        {
+            newBarChart(
+                myBarChart4_1,
+                wh1000Data["1A"],
+                scalesBar[3],
+                labelsBar[1],
+                ctxBar4_1
+            );
+            newBarChart(
+                myBarChart4_2,
+                wh1000Data["3A"],
+                scalesBar[3],
+                labelsBar[1],
+                ctxBar4_2
+            );
+            newBarChart(
+                myBarChart4_3,
+                wh1000Data["6A"],
+                scalesBar[3],
+                labelsBar[1],
+                ctxBar4_3
+            );
+        }
+        // VSD Charts
+        newVsdBarChart(myBarChart5, dataforvsd, scalesBar[4], labelsBar[2], ctxBar5);
     }
 }
 
@@ -540,6 +571,107 @@ function newBarChart(chartVar, data, scales, labels, ctx) {
                             datasetLabel +
                             ": " +
                             number_format(tooltipItem.yLabel + 1000) +
+                            "₺"
+                        );
+                    },
+                },
+            },
+        },
+    });
+}
+
+function newVsdBarChart(chartVar, data, scales, labels, ctx) {
+    chartVar = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "HS",
+                    backgroundColor: "#235097",
+                    hoverBackgroundColor: "#235097",
+                    borderColor: "#235097",
+                    data: data['HS'],
+                },
+                {
+                    label: 'YYF',
+                    backgroundColor: "#3A6FB0",
+                    hoverBackgroundColor: "#3A6FB0",
+                    borderColor: "#3A6FB0",
+                    data: data['YYF'],
+                },
+                {
+                    label: 'YHS',
+                    backgroundColor: "#5790C1",
+                    hoverBackgroundColor: "#5790C1",
+                    borderColor: "#5790C1",
+                    data: data['YHS'],
+                },
+                {
+                    label: 'TR',
+                    backgroundColor: "#8BBCE2",
+                    hoverBackgroundColor: "#8BBCE2",
+                    borderColor: "#8BBCE2",
+                    data: data['TR'],
+                },
+                {
+                    label: 'VİNT',
+                    backgroundColor: "#CADAED",
+                    hoverBackgroundColor: "#CADAED",
+                    borderColor: "#CADAED",
+                    data: data['VİNT'],
+                },
+                {
+                    label: 'GSYKB',
+                    backgroundColor: "#6F1473",
+                    hoverBackgroundColor: "#6F1473",
+                    borderColor: "#6F1473",
+                    data: data['GSYKB'],
+                },
+                {
+                    label: 'Kalanlar',
+                    backgroundColor: "#F8E3E0",
+                    hoverBackgroundColor: "#F8E3E0",
+                    borderColor: "#F8E3E0",
+                    data: data['Kalanlar'],
+                },
+            ],
+        },
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 25,
+                    top: 25,
+                    bottom: 0,
+                },
+            },
+            scales: scales,
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                titleMarginBottom: 10,
+                titleFontColor: "#6e707e",
+                titleFontSize: 14,
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                borderColor: "#dddfeb",
+                borderWidth: 1,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                caretPadding: 10,
+                callbacks: {
+                    label: function (tooltipItem, chart) {
+                        var datasetLabel =
+                            chart.datasets[tooltipItem.datasetIndex].label ||
+                            "";
+                        return (
+                            datasetLabel +
+                            ": " +
+                            number_format(tooltipItem.yLabel) +
                             "₺"
                         );
                     },
