@@ -64,31 +64,31 @@
         <div class="row ml-1 my-3">
             <div class="col-sm-6">
                 <ul class="nav nav-tabs btn-group btn-group-toggle float-left" role="tablist">
-                    <li role="presentation" class="active">
+                    <li role="presentation" class="px-1 active">
                         <a class="btn btn-sm btn-primary btn-simple active" href="#priceChart7G" aria-controls="home"
                             role="tab" data-toggle="tab">
                             7G
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="px-1">
                         <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1A" aria-controls="profile"
                             role="tab" data-toggle="tab">
                             1A
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="px-1">
                         <a class="btn btn-sm btn-primary btn-simple" href="#priceChart3A" aria-controls="profile"
                             role="tab" data-toggle="tab">
                             3A
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="px-1">
                         <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1Y" aria-controls="profile"
                             role="tab" data-toggle="tab">
                             1Y
                         </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" class="px-1">
                         <a class="btn btn-sm btn-primary btn-simple" href="#priceChart3Y" aria-controls="profile"
                             role="tab" data-toggle="tab">
                             3Y
@@ -519,9 +519,9 @@
                                     class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['6Month'] }}</span>
                             </div>
                             <!-- <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                                                                            <span class="text-foreground-03">YTD</span>
-                                                                            <span class="float-right text-foreground-02 truncate">%???</span>
-                                                                        </div> -->
+                                                                                <span class="text-foreground-03">YTD</span>
+                                                                                <span class="float-right text-foreground-02 truncate">%???</span>
+                                                                            </div> -->
                             <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                                 <span class="text-foreground-03">1 Yıl</span>
                                 <span
@@ -550,7 +550,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Varlık Sınıfı Dağılımı</h6>
                     </div>
                     <div class="card-body">
-                        <?php echo "<script>var dataforvsd = $vsdforBarChart;</script>" ?>
+                        <?php echo "<script>var dataforvsd = $vsdforBarChart;</script>"; ?>
                         <div class="chart-bar">
                             <canvas id="vsdBarChart"></canvas>
                         </div>
@@ -565,32 +565,30 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py3 d-inline-flex justify-content-between">
                         <!-- <h6 class="m-0 font-weight-bold text-primary d-inline-flex">1.000₺ Ne Oldu?</h6> -->
-                        <h6 class="m-0 font-weight-bold text-primary">1.000₺ Ne Oldu?</h6>
-                        <div class="float-right">
-                            <div class="btn-group btn-group-toggle float-left">
-                                <div class="row ml-1 my-3">
-                                    <div class="col-sm-6">
-                                        <ul class="nav nav-tabs btn-group btn-group-toggle float-right" role="tablist">
-                                            <li role="presentation">
-                                                <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart1A"
-                                                    aria-controls="profile" role="tab" data-toggle="tab">
-                                                    1A
-                                                </a>
-                                            </li>
-                                            <li role="presentation">
-                                                <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart3A"
-                                                    aria-controls="profile" role="tab" data-toggle="tab">
-                                                    3A
-                                                </a>
-                                            </li>
-                                            <li role="presentation">
-                                                <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart6A"
-                                                    aria-controls="profile" role="tab" data-toggle="tab">
-                                                    6Y
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                        <h6 class="m-0 d-flex align-items-center font-weight-bold text-primary">1.000₺ Ne Oldu?</h6>
+                        <div class="btn-group btn-group-toggle">
+                            <div class="row ml-1 my-3">
+                                <div class="col">
+                                    <ul class="nav nav-tabs btn-group btn-group-toggle d-flex" role="tablist">
+                                        <li role="presentation" class="px-1">
+                                            <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart1A"
+                                                aria-controls="profile" role="tab" data-toggle="tab">
+                                                1A
+                                            </a>
+                                        </li>
+                                        <li role="presentation" class="px-1">
+                                            <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart3A"
+                                                aria-controls="profile" role="tab" data-toggle="tab">
+                                                3A
+                                            </a>
+                                        </li>
+                                        <li role="presentation" class="px-1">
+                                            <a class="btn btn-sm btn-primary btn-simple" href="#wh1000Chart6A"
+                                                aria-controls="profile" role="tab" data-toggle="tab">
+                                                6Y
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
