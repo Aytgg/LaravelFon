@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mt-4 text-info">Görüntülenmek İstenen Fonu Seçin</h1>
@@ -12,8 +12,8 @@
     <div class="row">
         @foreach ($fon_codes as $fon_code)
 
-        <a href="/fons/{{ $fon_code }}">
-            <button class="btn btn-primary mx-3"><strong>{{ $fon_code }}</strong></button>
+        <a href="/tr/fons/{{ $fon_code }}">
+            <button class="btn btn-primary mx-3"><strong>{{ $fon_code }}</strong>  (TR)</button>
         </a>
             {{-- <div class="col-xl-6 col-md-12 mb-8">
                 <div class="card border-left-info shadow h-100 py-2">

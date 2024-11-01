@@ -4,21 +4,27 @@
     <div class="dock-container">
         <li class="li-1">
             <div class="name">Finder</div>
-            <img class="ico"
-                src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853981255cc36b3a37af_finder.png"
-                alt="">
+            <a href="/tr">
+                <img class="ico"
+                    src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853981255cc36b3a37af_finder.png"
+                    alt="">
+            </a>
         </li>
         <li class="li-2">
             <div class="name">Reminders</div>
-            <img class="ico"
-                src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853d44d99641ce69afeb_reminders.png"
-                alt="">
+            <a href="/us">
+                <img class="ico"
+                    src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853d44d99641ce69afeb_reminders.png"
+                    alt="">
+            </a>
         </li>
         <li class="li-3">
-            <div class="name">Photos</div>
-            <img class="ico"
-                src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853c55558a2e1192ee09_photos.png"
-                alt="">
+            <a href="/fr">
+                <div class="name">Photos</div>
+                <img class="ico"
+                    src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853c55558a2e1192ee09_photos.png"
+                    alt="">
+            </a>
         </li>
         <li class="li-8">
             <div class="name">Messages</div>
