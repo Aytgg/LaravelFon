@@ -21,7 +21,7 @@ class FonController extends Controller
         return view('selector', compact('fon_codes'));
     }
 
-    public function showFon($alpha2code, $fon_code)
+    public function showFon($fon_code)
     {
         $fon = Fon::where('code', $fon_code)->first();
 
@@ -216,5 +216,11 @@ class FonController extends Controller
                     ->avg($column)
             )
         );
+    }
+
+    function routeEmpty()
+    {
+        // view route uri to page
+        return view('routeMe');
     }
 }

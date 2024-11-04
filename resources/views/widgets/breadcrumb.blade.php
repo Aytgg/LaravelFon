@@ -1,5 +1,5 @@
 {{-- $breadcrumb-divider: quote(">"); --}}
-<nav class="navbar navbar-dark bg-dark" aria-label="breadcrumb">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark" aria-label="breadcrumb">
     <ol class="breadcrumb bg-dark">
         <li class="breadcrumb-item breadcrumb-item-white">
             <a class="text-white" href="/">

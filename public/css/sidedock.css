@@ -6,18 +6,23 @@
     width: 60px;
     height: auto;
     /* width: auto;
-    height: 60px; */
+    height: 60px;
+    */
     left: 40px;
     top: 50%;
     /* bottom: 20px;
-    left: 50%; */
+    left: 50%;
+    */
     border-radius: 16px;
     display: flex;
     justify-content: center;
-    /* position: absolute; */
+    /* position: absolute;
+    */
     transform: translate(-50%, -60%);
-    /* transform: translateX(-50%); */
-    /* translateY(-80px); */
+    /* transform: translateX(-50%);
+    */
+    /* translateY(-80px);
+    */
     position: fixed;
     z-index: 1;
 }
@@ -27,7 +32,8 @@
     height: auto;
     flex-direction: column;
     /* width: auto;
-        height: 100%; */
+    height: 100%;
+    */
     padding: 3px;
     display: flex;
     align-items: center;
@@ -55,10 +61,10 @@
     vertical-align: bottom;
     transition: 0.2s;
     transform-origin: 50% 100%;
+}
 
-    &:hover {
-        margin: 13px 0px 13px 0px;
-    }
+.dock .dock-container li:hover {
+    margin: 13px 0px 13px 0px;
 }
 
 .dock .dock-container li .name {
@@ -73,19 +79,20 @@
     justify-content: center;
     border-radius: 5px;
     visibility: hidden;
-    &::after {
-        transform: rotate(90deg);
-        content: "";
-        position: absolute;
-        left: -15px;
-        width: 0;
-        height: 0;
-        backdrop-filter: blur(13px);
-        -webkit-backdrop-filter: blur(13px);
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 10px solid rgba(0, 0, 0, 0.5);
-    }
+}
+
+.dock .dock-container li .name::after {
+    transform: rotate(90deg);
+    content: "";
+    position: absolute;
+    left: -15px;
+    width: 0;
+    height: 0;
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(0, 0, 0, 0.5);
 }
 
 .dock .dock-container li .ico {
@@ -97,21 +104,17 @@
     transition: transform 0.3s ease;
 }
 
-/*
-.dock .dock-container li .ico-bin {
+/* .dock .dock-container li .ico-bin {
     width: 94% !important;
     height: 94% !important;
     object-fit: cover;
     transition: 0.2s;
-
     &:hover {
         margin-left: 10px;
-    }
+   }
 }
 */
 
-.dock .dock-container li:hover {
-    .name {
-        visibility: visible !important;
-    }
+.dock .dock-container li:hover .name {
+    visibility: visible !important;
 }
