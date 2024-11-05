@@ -21,26 +21,59 @@
     * To make Breadcrumb visible
     * --}}
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary pb-md-0">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black pb-md-0 mb-3 align-items-end" style="z-index: 2;">
+
+    {{-- LOGO --}}
+    <a class="navbar-brand flex space-x-1.5 items-center flex-grow outline-none" href="/"
+        style="left:0; top:0; z-index: 3;">
+        <img alt=" Logo" loading="lazy" width="58" decoding="async" data-nimg="1" style="color:transparent;"
+            src="{{ asset('/img/logo.jpg') }}">
+    </a>
 
     {{-- HAMBURGER MENU ON MOBILE --}}
-    <a class="flex space-x-1.5 items-center flex-grow outline-none" href="/">
-        <img alt="Fintables Logo" loading="lazy" width="42" height="42" decoding="async" data-nimg="1"
-            style="color:transparent" src="{{ asset('/img/logo.jpg') }}">
-    </a>
-    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
+    <button type="button" class="navbar-toggler collapsed ml-auto" data-toggle="collapse" data-target="#main-nav">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div id="main-nav" class="collapse navbar-collapse justify-content-center">
 
-        <ul class="nav w-100">
-            {{-- <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Active</a>
-            </li> --}}
-            <li class="nav-item dropdown w-10 border border-bottom-0 rounded-top mx-1 ml-4 d-flex justify-content-center"
+    <style>
+        /* md ekran boyutunun altında border yok */
+        .border-md {
+            border: none;
+        }
+
+        /* 350px ve md ekran boyutu aralığında 50% */
+        .w-50-md-10 {
+            width: 50%;
+        }
+
+        @media (min-width: 768px) {
+
+            /* md ve üzeri ekran boyutunda border var */
+            .border-md {
+                border: 1px solid #e3e6f0;
+            }
+
+            /* md ve üzeri ekran boyutunda 10% */
+            .w-50-md-10 {
+                width: 10%
+            }
+        }
+
+        /* 350px ve altı ekran boyutunda 100% */
+        @media (max-width: 350px) {
+            .w-50-md-10 {
+                width: 100%
+            }
+        }
+    </style>
+
+    {{-- NAV MENU --}}
+    <div id="main-nav" class="collapse navbar-collapse justify-content-center">
+        <ul class="nav navbar-nav w-100 align-items-center">
+            <li class="nav-item dropdown w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0"
                 @if (Request::Segment(1) == 'fons') style="background-color: rgba(133, 135, 150, 0.5)!important;" @endif>
                 <a href="#"
-                    class="nav-tabs nav-link text-white  d-flex justify-content-center flex-column align-items-center"
+                    class="px-0 py-1 nav-tabs nav-link text-white  d-flex justify-content-center flex-md-column align-items-center"
                     data-toggle="dropdown" role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -55,12 +88,14 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-center">
                     <li>
-                        <a href="{{ route('routeMe2', ['seg1' => Request::segment(1), 'seg2' => 'IPB']) }}" class="dropdown-item">
+                        <a href="{{ route('routeMe2', ['seg1' => Request::segment(1), 'seg2' => 'IPB']) }}"
+                            class="dropdown-item">
                             IPB
-                        </a>    
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('routeMe2', ['seg1' => Request::segment(1), 'seg2' => 'IIH']) }}" class="dropdown-item">
+                        <a href="{{ route('routeMe2', ['seg1' => Request::segment(1), 'seg2' => 'IIH']) }}"
+                            class="dropdown-item">
                             IIH
                         </a>
                     </li>
@@ -69,6 +104,7 @@
                             Fon 1.3
                         </a>
                     </li>
+
                     {{-- <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -79,11 +115,12 @@
                     </li> --}}
                 </ul>
             </li>
-            <li class="nav-item dropdown w-10 border border-bottom-0 rounded-top mx-1 d-flex justify-content-center">
+            <li class="nav-item dropdown w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0">
                 <a href="#"
-                    class="nav-tabs nav-link text-white  d-flex justify-content-center flex-column align-items-center
+                    class="px-0 py-1 nav-tabs nav-link text-white d-flex justify-content-center flex-md-column align-items-center
                                     @if (Request::Segment(2) == 'newMenu') active @endif"
                     data-toggle="dropdown" role="button">
+
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -119,9 +156,9 @@
                     </li> --}}
                 </ul>
             </li>
-            <li class="nav-item dropdown w-10 border border-bottom-0 rounded-top mx-1 d-flex justify-content-center">
+            <li class="nav-item dropdown w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0">
                 <a href="#"
-                    class="nav-tabs nav-link text-white  d-flex justify-content-center flex-column align-items-center
+                    class="px-0 py-1 nav-tabs nav-link text-white  d-flex justify-content-center flex-md-column align-items-center
                                     @if (Request::Segment(2) == 'newMenu') active @endif"
                     data-toggle="dropdown" role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -159,6 +196,7 @@
                     </li> --}}
                 </ul>
             </li>
+
             {{-- <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
             </li> --}}
@@ -218,4 +256,5 @@
             </li>
         </ul> --}}
     </div>
+
 </nav>
