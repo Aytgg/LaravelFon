@@ -18,6 +18,6 @@
 <!-- End of Topbar -->
 
 <!-- Content Wrapper -->
-<div id="content-wrapper" class="d-flex flex-column" style="margin-top: 66px">
+<div id="content-wrapper" class="d-flex flex-column" style="margin-top: 84px">
     <!-- Main Content -->
     <div id="content">

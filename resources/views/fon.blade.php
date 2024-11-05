@@ -3,7 +3,7 @@
 @section('content')
     <div class="ml-5">
         <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow" style="height: auto;">
-            <div class="d-sm-flex align-items-center  mb-4">
+            <div class="d-sm-flex align-items-center mb-4">
                 <img class="mr-2" width="55"
                     src="https://storage.fintables.com/media/uploads/fund-management-logos/istanbul_portfoy.png">
                 <div>
