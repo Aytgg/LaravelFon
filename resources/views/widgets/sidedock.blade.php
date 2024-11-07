@@ -25,7 +25,7 @@
             </a>
         </li>
         <li class="li-4">
-            <a href="fons">
+            <a href="/fon">
                 <div class="name">Fon</div>
                 <svg class="ico" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 585.918 585.918">
                     <g id="SVGRepo_iconCarrier">
@@ -42,13 +42,13 @@
             </a>
         </li>
         <li class="li-5">
-            <a href="cr">
+            <a href="/cr">
                 <div class="name">CR</div>
                 <img class="ico" styke="width: 47px; height: 47px" src="{{ asset('/img/cr.png') }}">
             </a>
         </li>
         <li class="li-6">
-            <a href="stc">
+            <a href="/stc">
                 <div class="name">STC</div>
                 <img class="ico" styke="width: 47px; height: 47px" src="{{ asset('/img/stc.png') }}">
             </a>

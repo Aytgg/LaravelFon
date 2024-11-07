@@ -3,23 +3,27 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get(
-    '/{seg1}/{seg2}/{seg3}',
-    ['App\Http\Controllers\FonController'::class, 'routeEmpty']
-)->name('routeMe3');
-
-Route::get('/fons/{fon_code}',
-    ['App\Http\Controllers\FonController'::Class, 'showFon'])
+    '/fon',
+    ['App\Http\Controllers\FonController'::class, 'index']
+)
     ->name('fon');
+
+Route::permanentRedirect('/{seg1}/{seg2}/{seg3}', '/{seg1}/{seg2}')
+    ->name('routeMe3');
+
+// Route::permanentRedirect('/fons', '/fons/IPB');
+
+// Route::permanentRedirect('/{seg1}', '/{seg1}/gunluk');
 
 Route::get(
     '/{seg1}/{seg2}',
-    ['App\Http\Controllers\FonController'::class, 'routeEmpty']
+    ['App\Http\Controllers\FonController'::class, 'route2']
 )->name('routeMe2');
 
-Route::get('/{seg1}', ['App\Http\Controllers\FonController'::class, 'routeEmpty'])
+Route::get('/{seg1}', ['App\Http\Controllers\FonController'::class, 'route1'])
     ->name('routeMe1');
 
-Route::get('/', ['App\Http\Controllers\FonController'::class, 'routeEmpty'])
+Route::get('/', ['App\Http\Controllers\FonController'::class, 'route0'])
     ->name('routeMe0');
 
 

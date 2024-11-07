@@ -131,8 +131,6 @@
 <script src="{{asset('./')}}/vendor/chart.js/Chart.bundle.min.js"></script>
 <script src="{{asset('./')}}/vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="{{asset('./')}}/js/demo/charts-demo.js"></script>
 <!-- <script src="{{asset('./')}}/js/demo/chart-bar-demo.js"></script> -->
 
 </body>

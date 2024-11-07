@@ -35,47 +35,16 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <style>
-        /* md ekran boyutunun altında border yok */
-        .border-md {
-            border: none;
-        }
-
-        /* 350px ve md ekran boyutu aralığında 50% */
-        .w-50-md-10 {
-            width: 50%;
-        }
-
-        @media (min-width: 768px) {
-
-            /* md ve üzeri ekran boyutunda border var */
-            .border-md {
-                border: 1px solid #e3e6f0;
-            }
-
-            /* md ve üzeri ekran boyutunda 10% */
-            .w-50-md-10 {
-                width: 10%
-            }
-        }
-
-        /* 350px ve altı ekran boyutunda 100% */
-        @media (max-width: 350px) {
-            .w-50-md-10 {
-                width: 100%
-            }
-        }
-    </style>
-
     {{-- NAV MENU --}}
     <div id="main-nav" class="collapse navbar-collapse justify-content-center">
-        <ul class="nav navbar-nav w-100 align-items-center">
-            <li class="nav-item dropdown w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0"
-                @if (Request::Segment(1) == 'fons') style="background-color: rgba(133, 135, 150, 0.5)!important;" @endif>
-                <a href="#"
-                    class="px-0 py-1 nav-tabs nav-link text-white  d-flex justify-content-center flex-md-column align-items-center"
-                    data-toggle="dropdown" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        <ul class="nav navbar-nav w-100 align-items-center btn-group btn-group-toggle" id="menu-tab" role="tablist">
+            <li role="presentation" class="nav-item w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0"
+                style="background-color:rgba(133, 135, 150, 0.5)">
+                <a href="#gunluk" aria-controls="gunluk" data-toggle="tab" role="tab" aria-controls="gunluk"
+                    aria-selected="true"
+                    class="px-0 py-1 nav-tabs nav-link text-white d-flex justify-content-center flex-md-column align-items-center">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                         class="bi bi-eye-fill" viewBox="0 0 16 16">
                         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
                         <path
@@ -84,44 +53,14 @@
                     <span class="font-weight-bold">
                         Günlük
                     </span>
-                    {{-- FIND SVG ICONS FROM GETBOOTSTRAP NOT SVGREPO --}}
                 </a>
-                <ul class="dropdown-menu dropdown-menu-center">
-                    <li>
-                        <a href="{{ route('routeMe2', ['seg1' => Request::segment(1), 'seg2' => 'IPB']) }}"
-                            class="dropdown-item">
-                            IPB
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('routeMe2', ['seg1' => Request::segment(1), 'seg2' => 'IIH']) }}"
-                            class="dropdown-item">
-                            IIH
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Fon 1.3
-                        </a>
-                    </li>
-
-                    {{-- <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Separated link
-                        </a>
-                    </li> --}}
-                </ul>
             </li>
-            <li class="nav-item dropdown w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0">
-                <a href="#"
-                    class="px-0 py-1 nav-tabs nav-link text-white d-flex justify-content-center flex-md-column align-items-center
-                                    @if (Request::Segment(2) == 'newMenu') active @endif"
-                    data-toggle="dropdown" role="button">
+            <li role="presentation" class="nav-item w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0"
+                {{-- @if (Request::Segment(2) == 'analiz') style="background-color: rgba(133, 135, 150, 0.5)!important;" @endif --}}>
+                <a href="#analiz" aria-controls="analiz" data-toggle="tab" role="tab" aria-controls="analiz"
+                    class="px-0 py-1 nav-tabs nav-link text-white d-flex justify-content-center flex-md-column align-items-center">
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                         class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                             d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5" />
@@ -130,38 +69,13 @@
                         Analiz
                     </span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-center">
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 2.1
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 2.2
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 2.3
-                        </a>
-                    </li>
-                    {{-- <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Separated link
-                        </a>
-                    </li> --}}
-                </ul>
             </li>
-            <li class="nav-item dropdown w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0">
-                <a href="#"
-                    class="px-0 py-1 nav-tabs nav-link text-white  d-flex justify-content-center flex-md-column align-items-center
-                                    @if (Request::Segment(2) == 'newMenu') active @endif"
-                    data-toggle="dropdown" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            <li role="presentation" class="nav-item w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0"
+                {{-- @if (Request::Segment(2) == 'kiyas') style="background-color: rgba(133, 135, 150, 0.5)!important;" @endif --}}>
+                <a href="#kiyas" aria-controls="kiyas" data-toggle="tab" role="tab" aria-controls="kiyas"
+                    class="px-0 py-1 nav-tabs nav-link text-white d-flex justify-content-center flex-md-column align-items-center">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                         class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
                         <path
                             d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
@@ -170,39 +84,7 @@
                         Kıyas
                     </span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-center">
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 3.1
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 3.2
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 3.3
-                        </a>
-                    </li>
-                    {{-- <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Separated link
-                        </a>
-                    </li> --}}
-                </ul>
             </li>
-
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li> --}}
-            {{-- <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li> --}}
         </ul>
 
         {{-- <ul class="navbar-nav justify-content-start w-100">
@@ -256,5 +138,21 @@
             </li>
         </ul> --}}
     </div>
-
 </nav>
+
+
+<script>
+    var child = document.querySelectorAll('.nav-tabs');
+
+    child.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            child.forEach(function(ch) {
+                ch.parentNode.style.backgroundColor = 'transparent'
+            });
+            setTimeout(() => {
+                if (item.classList.contains('active'))
+                    item.parentNode.style.backgroundColor = 'rgba(133, 135, 150, 0.5)';
+            }, 1);
+        });
+    });
+</script>

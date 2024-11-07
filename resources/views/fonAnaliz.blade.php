@@ -1,6 +1,4 @@
-@extends('layouts.master')
 
-@section('content')
     <div class="ml-5">
         <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow" style="height: auto;">
             <div class="d-sm-flex align-items-center mb-4">
@@ -73,19 +71,19 @@
                             </a>
                         </li>
                         <li role="presentation" class="px-1">
-                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1A" aria-controls="profile"
+                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1A" aria-controls="priceChart1A"
                                 role="tab" data-toggle="tab">
                                 1A
                             </a>
                         </li>
                         <li role="presentation" class="px-1">
-                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart3A" aria-controls="profile"
+                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart3A" aria-controls="priceChart3A"
                                 role="tab" data-toggle="tab">
                                 3A
                             </a>
                         </li>
                         <li role="presentation" class="px-1">
-                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1Y" aria-controls="profile"
+                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1Y" aria-controls="priceChart1Y"
                                 role="tab" data-toggle="tab">
                                 1Y
                             </a>
@@ -523,9 +521,9 @@
                                         class="float-right text-foreground-02 truncate">%{{ $fonPriceDiffs['6Month'] }}</span>
                                 </div>
                                 <!-- <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                                                                                                <span class="text-foreground-03">YTD</span>
-                                                                                                <span class="float-right text-foreground-02 truncate">%???</span>
-                                                                                            </div> -->
+                                                                                                    <span class="text-foreground-03">YTD</span>
+                                                                                                    <span class="float-right text-foreground-02 truncate">%???</span>
+                                                                                                </div> -->
                                 <div class="flex justify-between items-center h-9 space-x-4 text-sm">
                                     <span class="text-foreground-03">1 Yıl</span>
                                     <span
@@ -642,4 +640,5 @@
             {{-- </div> --}}
         </div>
     </div>
-@endsection
+
+
