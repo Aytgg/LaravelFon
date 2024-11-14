@@ -39,9 +39,9 @@
     <div id="main-nav" class="collapse navbar-collapse justify-content-center">
         <ul class="nav navbar-nav w-100 align-items-center btn-group btn-group-toggle" id="menu-tab" role="tablist">
             <li role="presentation" class="nav-item w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0"
-                style="background-color:rgba(133, 135, 150, 0.5)">
+                @if (request('tab') == 'Gunluk' || request('tab') == null) style="background-color:rgba(133, 135, 150, 0.5)" @endif>
                 <a href="#gunluk" aria-controls="gunluk" data-toggle="tab" role="tab" aria-controls="gunluk"
-                    aria-selected="true"
+                    @if (request('tab') == 'Gunluk') aria-selected="true" @endif
                     class="px-0 py-1 nav-tabs nav-link text-white d-flex justify-content-center flex-md-column align-items-center">
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -56,8 +56,9 @@
                 </a>
             </li>
             <li role="presentation" class="nav-item w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0"
-                {{-- @if (Request::Segment(2) == 'analiz') style="background-color: rgba(133, 135, 150, 0.5)!important;" @endif --}}>
+            @if (request('tab') == 'Analiz') style="background-color: rgba(133, 135, 150, 0.5)!important;" @endif>
                 <a href="#analiz" aria-controls="analiz" data-toggle="tab" role="tab" aria-controls="analiz"
+                    @if (request('tab') == 'Analiz') aria-selected="true" @endif
                     class="px-0 py-1 nav-tabs nav-link text-white d-flex justify-content-center flex-md-column align-items-center">
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -71,8 +72,9 @@
                 </a>
             </li>
             <li role="presentation" class="nav-item w-50-md-10 border-md border-bottom-0 rounded-top mx-1 my-2 my-md-0"
-                {{-- @if (Request::Segment(2) == 'kiyas') style="background-color: rgba(133, 135, 150, 0.5)!important;" @endif --}}>
+            @if (request('tab') == 'Kiyas') style="background-color: rgba(133, 135, 150, 0.5)!important;" @endif>
                 <a href="#kiyas" aria-controls="kiyas" data-toggle="tab" role="tab" aria-controls="kiyas"
+                    @if (request('tab') == 'Kiyas') aria-selected="true" @endif
                     class="px-0 py-1 nav-tabs nav-link text-white d-flex justify-content-center flex-md-column align-items-center">
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"

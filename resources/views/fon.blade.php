@@ -33,5 +33,4 @@
 
 
 <!-- Page level custom scripts -->
-<script src="{{ asset('./') }}/js/demo/charts-demo.js"></script>
 @endsection

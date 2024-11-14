@@ -1,5 +1,3 @@
-
-    <div class="ml-5">
         <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow" style="height: auto;">
             <div class="d-sm-flex align-items-center mb-4">
                 <img class="mr-2" width="55"
@@ -65,26 +63,26 @@
                 <div class="col-sm-6">
                     <ul class="nav nav-tabs btn-group btn-group-toggle float-left" role="tablist">
                         <li role="presentation" class="px-1 active">
-                            <a class="btn btn-sm btn-primary btn-simple active" href="#priceChart7G" aria-controls="home"
-                                role="tab" data-toggle="tab">
+                            <a class="btn btn-sm btn-primary btn-simple active" href="#priceChart7G"
+                                aria-controls="home" role="tab" data-toggle="tab">
                                 7G
                             </a>
                         </li>
                         <li role="presentation" class="px-1">
-                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1A" aria-controls="priceChart1A"
-                                role="tab" data-toggle="tab">
+                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1A"
+                                aria-controls="priceChart1A" role="tab" data-toggle="tab">
                                 1A
                             </a>
                         </li>
                         <li role="presentation" class="px-1">
-                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart3A" aria-controls="priceChart3A"
-                                role="tab" data-toggle="tab">
+                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart3A"
+                                aria-controls="priceChart3A" role="tab" data-toggle="tab">
                                 3A
                             </a>
                         </li>
                         <li role="presentation" class="px-1">
-                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1Y" aria-controls="priceChart1Y"
-                                role="tab" data-toggle="tab">
+                            <a class="btn btn-sm btn-primary btn-simple" href="#priceChart1Y"
+                                aria-controls="priceChart1Y" role="tab" data-toggle="tab">
                                 1Y
                             </a>
                         </li>
@@ -161,7 +159,8 @@
                             <h6 class="m-0 font-weight-bold text-primary">Fon Toplam Değer</h6>
                         </div>
                         <div class="card-body">
-                            <p>{{ number_format(floatval(str_replace(',', '.', $fonPrice)) * $fonPayAdet, 2, '.', ',') }} ₺
+                            <p>{{ number_format(floatval(str_replace(',', '.', $fonPrice)) * $fonPayAdet, 2, '.', ',') }}
+                                ₺
                             </p>
                             <?php echo "<script>var ftdData = $ftdforBarChart;</script>"; ?>
                             <div class="chart-bar">
@@ -272,10 +271,10 @@
                                 href="/sirketler/YKBNK">
                                 <div class="py-1.5 px-4 flex justify-between items-center">
                                     <div class="w-28">
-                                        <div class="flex space-x-1.5"><img alt="Yapı ve Kredi Bankası A.Ş. Şirket Logosu"
-                                                data-state="closed" loading="lazy" width="28" height="28"
-                                                decoding="async" data-nimg="1" class="rounded sheadow-lg"
-                                                style="color:transparent"
+                                        <div class="flex space-x-1.5"><img
+                                                alt="Yapı ve Kredi Bankası A.Ş. Şirket Logosu" data-state="closed"
+                                                loading="lazy" width="28" height="28" decoding="async"
+                                                data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
                                                 src="https://storage.fintables.com/media/uploads/company-logos/ykbnk_icon.jpg">
                                             <div class="h-[28px]">
                                                 <div class="text-foreground-01 text-sm mt-[-3px]">YKBNK</div>
@@ -359,10 +358,10 @@
                                 href="/sirketler/YKBNK">
                                 <div class="py-1.5 px-4 flex justify-between items-center">
                                     <div class="w-28">
-                                        <div class="flex space-x-1.5"><img alt="Yapı ve Kredi Bankası A.Ş. Şirket Logosu"
-                                                data-state="closed" loading="lazy" width="28" height="28"
-                                                decoding="async" data-nimg="1" class="rounded sheadow-lg"
-                                                style="color:transparent"
+                                        <div class="flex space-x-1.5"><img
+                                                alt="Yapı ve Kredi Bankası A.Ş. Şirket Logosu" data-state="closed"
+                                                loading="lazy" width="28" height="28" decoding="async"
+                                                data-nimg="1" class="rounded sheadow-lg" style="color:transparent"
                                                 src="https://storage.fintables.com/media/uploads/company-logos/ykbnk_icon.jpg">
                                             <div class="h-[28px]">
                                                 <div class="text-foreground-01 text-sm mt-[-3px]">YKBNK</div>
@@ -567,7 +566,8 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py3 d-inline-flex justify-content-between">
                             <!-- <h6 class="m-0 font-weight-bold text-primary d-inline-flex">1.000₺ Ne Oldu?</h6> -->
-                            <h6 class="m-0 d-flex align-items-center font-weight-bold text-primary">1.000₺ Ne Oldu?</h6>
+                            <h6 class="m-0 d-flex align-items-center font-weight-bold text-primary">1.000₺ Ne Oldu?
+                            </h6>
                             <div class="btn-group btn-group-toggle">
                                 <div class="row ml-1 my-3">
                                     <div class="col">
@@ -639,6 +639,3 @@
             </div>
             {{-- </div> --}}
         </div>
-    </div>
-
-

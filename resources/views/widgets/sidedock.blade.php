@@ -53,13 +53,5 @@
                 <img class="ico" styke="width: 47px; height: 47px" src="{{ asset('/img/stc.png') }}">
             </a>
         </li>
-        {{-- <li class="li-7">
-            <a href="/unknown">
-                <div class="name">Podcasts</div>
-                <img class="ico"
-                    src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853cc718ba9ede6888f9_podcasts.png"
-                    alt="">
-            </a>
-        </li> --}}
     </div>
 </div>

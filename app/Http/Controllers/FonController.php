@@ -23,7 +23,7 @@ class FonController extends Controller
 
     public function index()
     {
-        $fon_code = request('fon_code') ?? 'IPB';
+        $fon_code = request('fon_code') ?? Fon::first()->code;
 
         $fon = Fon::where('code', $fon_code)->first();
 
@@ -168,7 +168,7 @@ class FonController extends Controller
         $ftdforBarChart = json_encode($ftdforBarChartData);
         $vsdforBarChart = json_encode($vsdforBarChart);
 
-        return view('page', compact(
+        return view('fon', compact(
             'fon',
             'fonPrice',
             'time',
@@ -222,17 +222,16 @@ class FonController extends Controller
 
     public function route2()
     {
-        // return 'HERE';
-        return view('page');
+        return view('fon');
     }
 
     public function route1()
     {
-        return view('page');
+        return view('fon');
     }
 
     public function route0()
     {
-        return view('page');
+        return view('fon');
     }
 }

@@ -2,13 +2,13 @@
     <!-- Main Content -->
     <div id="content">
         <div id="menu-tabContent" class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="gunluk">
+            <div role="tabpanel" class="tab-pane @if (request('tab') == 'Gunluk' || request('tab' == null)) active @endif" id="gunluk">
                 <div>
                     @if (Request::segment(1) == 'etf')
                         ETF > Günlük
                     @elseif (Request::segment(1) == 'byf')
                         BYF > Günlük
-                    @elseif (Request::segment(1) == 'fons')
+                    @elseif (Request::segment(1) == 'fon')
                         FON > Günlük
                     @elseif(Request::segment(1) == 'cr')
                         CR > Günlük
@@ -21,19 +21,25 @@
                     @endif
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="analiz">
+            <div role="tabpanel" class="tab-pane @if (request('tab') == 'Analiz') active @endif" id="analiz">
                 <div>
                     @if (Request::segment(1) == 'etf')
                         ETF > Analiz
                     @elseif (Request::segment(1) == 'byf')
                         BYF > Analiz
                     @elseif (Request::segment(1) == 'fon')
-                        FON > Analiz
+                        <label for="fon_code">Fon seçiniz:</label>
+                        <select name="fon_code" id="fon_code"
+                            onchange="window.location.href=this.options[this.selectedIndex].value;">
+                            @foreach (App\Models\Fon::all() as $f)
+                                <option @if (request('fon_code') == $f->code) selected @endif
+                                    value="{{ route('fon', ['tab' => 'Analiz', 'fon_code' => $f->code]) }}">
+                                    {{ $f->code }} : {{ $f->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <br>
                         @include('fonAnaliz')
-                        {{-- {{ ['App\Http\Controllers\FonController'::class, showFon()] }} --}}
-                        {{-- {{ to_route('fon', ['fon_code' => 'IPB']) }} --}}
-                        {{-- @include('fon', ['fon_code' => 'IPB']) --}}
-                        {{-- {{ App\Http\Controllers\FonController::showFon('IPB') }} --}}
                     @elseif(Request::segment(1) == 'cr')
                         CR > Analiz
                     @elseif(Request::segment(1) == 'stc')
@@ -45,13 +51,13 @@
                     @endif
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="kiyas">
+            <div role="tabpanel" class="tab-pane @if (request('tab') == 'Kiyas') active @endif" id="kiyas">
                 <div>
                     @if (Request::segment(1) == 'etf')
                         ETF > Kıyas
                     @elseif (Request::segment(1) == 'byf')
                         BYF > Kıyas
-                    @elseif (Request::segment(1) == 'fons')
+                    @elseif (Request::segment(1) == 'fon')
                         FON > Kıyas
                     @elseif(Request::segment(1) == 'cr')
                         CR > Kıyas
